@@ -1,0 +1,14 @@
+import GameCanvas from '@/components/game/GameCanvas';
+
+export default function GamePage() {
+  return (
+    <div style={{
+      width: '100vw',
+      height: '100vh',
+      overflow: 'hidden',
+      background: '#0a0a1a',
+    }}>
+      <GameCanvas />
+    </div>
+  );
+}
