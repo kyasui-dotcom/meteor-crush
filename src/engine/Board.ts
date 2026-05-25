@@ -82,17 +82,23 @@ export class Board {
   applyGravity(): boolean {
     let moved = false;
     for (let x = 0; x < this.width; x++) {
-      // Scan bottom to top
       let writeY = this.height - 1;
       for (let readY = this.height - 1; readY >= 0; readY--) {
-        if (this.grid[readY][x].type !== 'empty') {
-          if (readY !== writeY) {
-            this.grid[writeY][x] = { ...this.grid[readY][x] };
-            this.grid[readY][x] = { ...EMPTY_CELL };
-            moved = true;
-          }
-          writeY--;
+        const cell = this.grid[readY][x];
+        if (cell.type === 'empty') continue;
+
+        // Fixed cores pin each gravity segment in place.
+        if (cell.core) {
+          writeY = readY - 1;
+          continue;
         }
+
+        if (readY !== writeY) {
+          this.grid[writeY][x] = { ...cell };
+          this.grid[readY][x] = { ...EMPTY_CELL };
+          moved = true;
+        }
+        writeY--;
       }
     }
     return moved;
@@ -126,5 +132,17 @@ export class Board {
     if (this.isInBounds(x, y)) {
       this.grid[y][x] = { ...EMPTY_CELL };
     }
+  }
+
+  getCoreCount(): number {
+    let count = 0;
+    for (let y = 0; y < this.height; y++) {
+      for (let x = 0; x < this.width; x++) {
+        if (this.grid[y][x].core) {
+          count++;
+        }
+      }
+    }
+    return count;
   }
 }

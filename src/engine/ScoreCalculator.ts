@@ -1,7 +1,6 @@
 import {
   SCORE_SINGLE, SCORE_DOUBLE, SCORE_TRIPLE, SCORE_QUAD,
   SCORE_PENTA, SCORE_HEXA, SCORE_SOFT_DROP, SCORE_HARD_DROP,
-  CHAIN_MULTIPLIERS,
 } from '@/lib/constants';
 
 export class ScoreCalculator {
@@ -28,14 +27,33 @@ export class ScoreCalculator {
   }
 
   static getChainMultiplier(chainCount: number): number {
-    if (chainCount >= CHAIN_MULTIPLIERS.length) {
-      return CHAIN_MULTIPLIERS[CHAIN_MULTIPLIERS.length - 1];
-    }
-    return CHAIN_MULTIPLIERS[chainCount];
+    if (chainCount <= 1) return 1;
+    return 2 ** (chainCount - 1);
   }
 
   static getBombScore(destroyedCells: number, chainCount: number, level: number): number {
     const base = destroyedCells * 50;
+    const multiplier = ScoreCalculator.getChainMultiplier(chainCount);
+    return base * multiplier * (level + 1);
+  }
+
+  static getPurifyScore(destroyedCells: number, clearedCores: number, chainCount: number, level: number): number {
+    const base = destroyedCells * 45 + clearedCores * 180;
+    const multiplier = ScoreCalculator.getChainMultiplier(chainCount);
+    return base * multiplier * (level + 1);
+  }
+
+  static getRescueColonyScore(destroyedCells: number, clearedCores: number, level: number): number {
+    const base = 600 + destroyedCells * 55 + clearedCores * 260;
+    return base * (level + 1);
+  }
+
+  static getPurifyWaveBonus(stage: number): number {
+    return 1000 + Math.max(0, stage - 1) * 250;
+  }
+
+  static getArmoryScore(triggeredWeapons: number, destroyedCells: number, chainCount: number, level: number): number {
+    const base = triggeredWeapons * 320 + destroyedCells * 38;
     const multiplier = ScoreCalculator.getChainMultiplier(chainCount);
     return base * multiplier * (level + 1);
   }

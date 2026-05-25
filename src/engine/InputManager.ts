@@ -132,11 +132,47 @@ export class InputManager {
     return this.keyStates.get(action)?.pressed ?? false;
   }
 
-  /** Inject a one-shot action (used by TouchManager) */
+  /** Mark an action as held down (used by touch controls for soft drop) */
+  pressAction(action: InputAction): void {
+    const state = this.keyStates.get(action);
+    if (!state) return;
+    if (!state.pressed) {
+      state.justPressed = true;
+    }
+    state.pressed = true;
+  }
+
+  /** Release a previously held action */
+  releaseAction(action: InputAction): void {
+    const state = this.keyStates.get(action);
+    if (!state) return;
+    state.pressed = false;
+    state.justPressed = false;
+    state.heldTime = 0;
+    state.dasActive = false;
+    state.dasTimer = 0;
+  }
+
+  /** Inject a one-shot action (used by VirtualController / TouchManager) */
   injectAction(action: InputAction): void {
     const state = this.keyStates.get(action);
     if (state) {
       state.justPressed = true;
+    }
+  }
+
+  /** Pulse an action for one frame so pressed-state inputs still work */
+  pulseAction(action: InputAction): void {
+    const state = this.keyStates.get(action);
+    if (state) {
+      state.justPressed = true;
+      state.pressed = true;
+      requestAnimationFrame(() => {
+        state.pressed = false;
+        state.heldTime = 0;
+        state.dasActive = false;
+        state.dasTimer = 0;
+      });
     }
   }
 

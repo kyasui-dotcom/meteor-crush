@@ -1,5 +1,10 @@
 import { CHAIN_TEXTS_BOMBER, ANNIHILATION_TEXT, CLASSIC_LINE_TEXTS } from '@/lib/constants';
 
+export interface ChainPresentation {
+  text: string;
+  tier: number;
+}
+
 export class ChainTextResolver {
   // For Bomber/Gravity modes: based on chain count
   static getChainText(chainCount: number): string {
@@ -8,6 +13,25 @@ export class ChainTextResolver {
       return CHAIN_TEXTS_BOMBER[chainCount];
     }
     return '';
+  }
+
+  static getChainPresentation(chainCount: number): ChainPresentation {
+    return {
+      text: ChainTextResolver.getChainText(chainCount),
+      tier: ChainTextResolver.getEffectTier(chainCount),
+    };
+  }
+
+  static getSingleOrChainPresentation(
+    chainCount: number,
+    singleText: string,
+    singleTier: number = 1,
+  ): ChainPresentation {
+    if (chainCount <= 1) {
+      return { text: singleText, tier: singleTier };
+    }
+
+    return ChainTextResolver.getChainPresentation(chainCount);
   }
 
   // For Classic mode: based on simultaneous lines cleared

@@ -1,0 +1,1420 @@
+{
+  "titleInfo": {
+    "text": "METEOR CRUSH\nCLASSIC\nBOMBER\nARMORY\nPURIFY\n\n◎ 3セルシャードでコアを包囲浄化！\n\nSTART\nルール\n🏆 ランキング\n設定\n\n←→: 移動 | ↑/W: 回転 | Space: ドロップ | Shift: ホールド",
+    "hasPurifyButton": true
+  },
+  "settingsInfo": {
+    "text": "METEOR CRUSH\nCLASSIC\nBOMBER\nARMORY\nPURIFY\n\n◎ 3セルシャードでコアを包囲浄化！\n\nSTART\nルール\n🏆 ランキング\n設定\n\n←→: 移動 | ↑/W: 回転 | Space: ドロップ | Shift: ホールド\n\n設定\n\n各モード開始前にルールカードを表示します\n\n開始前にルールを表示\n各モード開始前にルールカードを表示します\nON\n言語\n日本語\nEnglish\nルール\n閉じる",
+    "hasEasterEggLabel": false
+  },
+  "bomberSeeded": {
+    "mode": "bomber",
+    "boardSeeded": true
+  },
+  "bomberResolved": {
+    "mode": "bomber",
+    "state": "playing",
+    "chainText": "Crush",
+    "score": 550,
+    "lines": 0
+  },
+  "anchorSeeded": {
+    "currentPiece": "Anchor",
+    "occupiedCells": [
+      {
+        "x": 4,
+        "y": 13
+      },
+      {
+        "x": 5,
+        "y": 13
+      },
+      {
+        "x": 6,
+        "y": 13
+      },
+      {
+        "x": 4,
+        "y": 14
+      },
+      {
+        "x": 5,
+        "y": 14
+      },
+      {
+        "x": 6,
+        "y": 14
+      }
+    ]
+  },
+  "anchorResolved": {
+    "currentPiece": "Bend",
+    "board": [
+      [
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "block",
+          "color": 1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        }
+      ],
+      [
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "block",
+          "color": 1,
+          "core": false
+        },
+        {
+          "type": "block",
+          "color": 1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        }
+      ],
+      [
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        }
+      ],
+      [
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        }
+      ],
+      [
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        }
+      ],
+      [
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        }
+      ],
+      [
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        }
+      ],
+      [
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        }
+      ],
+      [
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        }
+      ],
+      [
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        }
+      ],
+      [
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        }
+      ],
+      [
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        }
+      ],
+      [
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        }
+      ],
+      [
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        }
+      ],
+      [
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        }
+      ],
+      [
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        }
+      ],
+      [
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        }
+      ],
+      [
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        }
+      ],
+      [
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "block",
+          "color": 4,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        }
+      ],
+      [
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "block",
+          "color": 10,
+          "core": false
+        },
+        {
+          "type": "block",
+          "color": 10,
+          "core": false
+        },
+        {
+          "type": "block",
+          "color": 10,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        }
+      ],
+      [
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "block",
+          "color": 10,
+          "core": false
+        },
+        {
+          "type": "block",
+          "color": 10,
+          "core": false
+        },
+        {
+          "type": "block",
+          "color": 10,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        }
+      ],
+      [
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "block",
+          "color": 1,
+          "core": false
+        },
+        {
+          "type": "block",
+          "color": 2,
+          "core": false
+        },
+        {
+          "type": "block",
+          "color": 3,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        },
+        {
+          "type": "empty",
+          "color": -1,
+          "core": false
+        }
+      ]
+    ],
+    "chainText": "ANCHOR DROP"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "bomberSeed": {
+    "mode": "bomber",
+    "boardSeeded": true
+  },
+  "bomberResolved": {
+    "mode": "bomber",
+    "state": "playing",
+    "chainText": "Crush",
+    "score": 700,
+    "lines": 1
+  }
+}

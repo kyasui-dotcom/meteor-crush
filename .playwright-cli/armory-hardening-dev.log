@@ -1,0 +1,31 @@
+
+> meteor-crush@0.1.0 dev
+> next dev --hostname 127.0.0.1 --port 3100
+
+▲ Next.js 16.1.6 (Turbopack)
+- Local:         http://127.0.0.1:3100
+- Network:       http://127.0.0.1:3100
+
+✓ Starting...
+✓ Ready in 1120ms
+ GET /game/ 200 in 485ms (compile: 350ms, render: 134ms)
+ GET /game/ 200 in 43ms (compile: 3ms, render: 40ms)
+ GET /game/ 200 in 123ms (compile: 7ms, render: 116ms)
+ GET /game/ 200 in 271ms (compile: 8ms, render: 262ms)
+ GET / 200 in 276ms (compile: 120ms, render: 156ms)
+ GET /game/ 200 in 134ms (compile: 8ms, render: 127ms)
+ GET / 200 in 157ms (compile: 9ms, render: 148ms)
+ GET /game/ 200 in 157ms (compile: 68ms, render: 89ms)
+ GET /game/ 200 in 99ms (compile: 6ms, render: 93ms)
+ GET / 200 in 186ms (compile: 8ms, render: 178ms)
+ GET /game/ 200 in 185ms (compile: 81ms, render: 105ms)
+ GET /game/ 200 in 112ms (compile: 6ms, render: 107ms)
+ GET / 200 in 163ms (compile: 6ms, render: 157ms)
+ GET /game/ 200 in 165ms (compile: 63ms, render: 101ms)
+ GET /game/ 200 in 137ms (compile: 4ms, render: 133ms)
+ GET / 200 in 164ms (compile: 6ms, render: 158ms)
+ GET /game/ 200 in 164ms (compile: 37ms, render: 127ms)
+ GET /game/ 200 in 85ms (compile: 6ms, render: 79ms)
+ GET / 200 in 167ms (compile: 7ms, render: 160ms)
+ GET /game/ 200 in 167ms (compile: 41ms, render: 126ms)
+[?25h

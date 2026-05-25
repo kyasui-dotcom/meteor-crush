@@ -1,9 +1,23 @@
 export type CellType = 'empty' | 'block' | 'bomb';
+export type WeaponId = 'missile' | 'bomb' | 'tub' | 'pan' | 'katana' | 'sword' | 'spear';
+export type BombKind = 'normal' | 'thunder' | 'cluster';
+
+export interface ArmoryFragmentTag {
+  weaponId: WeaponId;
+  fragmentIndex: number;
+}
 
 export interface Cell {
   type: CellType;
   color: number; // index into BLOCK_COLORS
-  megaBomb?: boolean; // part of a 2x2 mega bomb
+  megaBomb?: boolean; // legacy oversized-bomb flag kept for compatibility
+  megaBombAnchorX?: number;
+  megaBombAnchorY?: number;
+  core?: boolean; // fixed objective cell used in Purify mode
+  fire?: boolean; // ignition block used in Bomber mode
+  bombKind?: BombKind;
+  weaponId?: WeaponId;
+  fragmentIndex?: number;
 }
 
 export const EMPTY_CELL: Cell = { type: 'empty', color: -1 };
@@ -21,7 +35,7 @@ export type GameState =
   | 'chain_resolving'
   | 'game_over';
 
-export type GameModeType = 'classic' | 'bomber';
+export type GameModeType = 'classic' | 'bomber' | 'purify' | 'armory';
 
 export type RotationDirection = 1 | -1; // 1 = CW, -1 = CCW
 
@@ -29,7 +43,10 @@ export interface PieceDefinition {
   name: string;
   matrices: number[][][]; // [rotationState][row][col]
   color: number;
+  cellColors?: number[][][]; // optional per-cell colors for multi-color pieces
+  cellFragments?: (ArmoryFragmentTag | null)[][][];
   isComet: boolean;
+  special?: 'rescueColony' | 'supportWeight';
 }
 
 export interface GameEvent {
@@ -66,4 +83,10 @@ export interface VisualEvent {
   chainCount?: number;
   /** Bomb center positions with their blast radius (for blast ring effect) */
   blastCenters?: { x: number; y: number; radius: number }[];
+  /** Weapon effect identity for ARMORY mode visuals */
+  weaponId?: WeaponId;
+  /** ARMORY match strength: 1 for normal, 2 for six-cell overdrive */
+  power?: number;
+  /** Optional effect lifetime for longer blast visuals */
+  durationMs?: number;
 }

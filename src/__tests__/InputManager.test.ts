@@ -68,4 +68,20 @@ describe('InputManager', () => {
       removeSpy.mockRestore();
     });
   });
+
+  describe('pressAction / releaseAction', () => {
+    it('marks an action as pressed until released', () => {
+      input.pressAction('down');
+      expect(input.isPressed('down')).toBe(true);
+
+      input.releaseAction('down');
+      expect(input.isPressed('down')).toBe(false);
+    });
+
+    it('sets justPressed when a held action starts', () => {
+      input.pressAction('down');
+      expect(input.isJustPressed('down')).toBe(true);
+      expect(input.isJustPressed('down')).toBe(false);
+    });
+  });
 });

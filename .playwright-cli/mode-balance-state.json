@@ -1,0 +1,26 @@
+{
+  "bomberSeed": {
+    "mode": "bomber",
+    "boardSeeded": true
+  },
+  "bomberResolved": {
+    "mode": "bomber",
+    "state": "playing",
+    "chainText": "Crush",
+    "score": 700,
+    "lines": 1
+  },
+  "bomberText": null,
+  "armorySeed": {
+    "mode": "armory",
+    "boardSeeded": true,
+    "weapon": "spear"
+  },
+  "armoryResolved": {
+    "mode": "armory",
+    "chainText": "SPEAR THRUST",
+    "weapons": 1,
+    "score": 548
+  },
+  "armoryText": null
+}

@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#04040c"/>
+      <stop offset="55%" stop-color="#0d1533"/>
+      <stop offset="100%" stop-color="#160711"/>
+    </linearGradient>
+    <linearGradient id="meteor" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffd07a"/>
+      <stop offset="55%" stop-color="#ff8f33"/>
+      <stop offset="100%" stop-color="#cf2c2c"/>
+    </linearGradient>
+    <linearGradient id="trail" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#fff7c0" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#ff7a00" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="128" fill="url(#bg)"/>
+  <circle cx="108" cy="120" r="14" fill="#8db8ff" opacity="0.9"/>
+  <circle cx="404" cy="108" r="10" fill="#7ee6ff" opacity="0.7"/>
+  <circle cx="420" cy="174" r="6" fill="#fff2b3" opacity="0.85"/>
+  <path d="M132 338c62-26 121-71 175-135 26-31 50-65 69-104 13 64-2 129-43 183-43 56-109 93-201 112z" fill="url(#trail)"/>
+  <g transform="translate(274 242) rotate(-18)">
+    <path d="M-58-20c26-42 78-72 128-42 52 31 59 100 28 148-31 49-102 81-154 44-46-33-45-98-2-150z" fill="url(#meteor)"/>
+    <path d="M-8-78c17-18 52-25 71-4 14 15 7 43-16 54-27 14-50 5-55-13-4-12-1-24 0-37z" fill="#ffe8aa" opacity="0.9"/>
+    <circle cx="20" cy="12" r="16" fill="#7a140f" opacity="0.35"/>
+    <circle cx="-24" cy="46" r="12" fill="#7a140f" opacity="0.28"/>
+    <circle cx="64" cy="54" r="10" fill="#7a140f" opacity="0.22"/>
+  </g>
+  <text x="256" y="444" text-anchor="middle" font-family="monospace" font-size="68" font-weight="700" fill="#ffb347" letter-spacing="4">
+    MC
+  </text>
+</svg>

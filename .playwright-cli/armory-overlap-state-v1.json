@@ -1,0 +1,15 @@
+{
+  "debugResult": {
+    "mode": "armory",
+    "boardSeeded": true,
+    "weapon": "bomb",
+    "overlap": true
+  },
+  "resolved": {
+    "mode": "armory",
+    "chainText": "BOMB BURST",
+    "weapons": 1,
+    "score": 586
+  },
+  "errors": []
+}

@@ -1,0 +1,26 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e107]:
+    - heading "GAME OVER" [level=1] [ref=e108]
+    - paragraph [ref=e109]: 16 点
+    - paragraph [ref=e110]: "ハイスコア: 80"
+    - generic [ref=e111]:
+      - generic [ref=e112]: スポンサーリンク
+      - insertion [ref=e114]:
+        - iframe [ref=e116]:
+          
+    - generic [ref=e117]:
+      - textbox "名前を入力" [ref=e118]: Tester
+      - button "送信" [ref=e119] [cursor=pointer]
+    - generic [ref=e120]:
+      - button "CLASSIC" [ref=e121] [cursor=pointer]
+      - button "BOMBER" [ref=e122] [cursor=pointer]
+    - generic [ref=e123]:
+      - button "RETRY" [ref=e124] [cursor=pointer]
+      - button "🏆" [ref=e125] [cursor=pointer]
+    - generic [ref=e126]:
+      - button "ルール" [ref=e127] [cursor=pointer]
+      - button "設定" [ref=e128] [cursor=pointer]
+    - button "タイトルへ" [ref=e129] [cursor=pointer]
+  - button "Open Next.js Dev Tools" [ref=e22] [cursor=pointer]:
+    - img [ref=e23]
+  - alert [ref=e26]

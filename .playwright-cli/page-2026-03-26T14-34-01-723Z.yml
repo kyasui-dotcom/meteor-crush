@@ -1,0 +1,63 @@
+- generic [ref=e1]:
+  - generic [ref=e3]:
+    - generic:
+      - generic: SECRET 1/20
+      - generic: Rule Card Viewer
+    - generic [ref=e5]:
+      - heading "METEOR CRUSH" [level=1] [ref=e6]
+      - generic [ref=e7]:
+        - button "CLASSIC" [ref=e8] [cursor=pointer]
+        - button "BOMBER" [ref=e9] [cursor=pointer]
+        - button "PURIFY" [ref=e10] [cursor=pointer]
+      - paragraph [ref=e11]: ◎ 3セルシャードでコアを包囲浄化！
+      - button "START" [ref=e12] [cursor=pointer]
+      - generic [ref=e13]:
+        - button "ルール" [active] [ref=e14] [cursor=pointer]
+        - button "🏆 ランキング" [ref=e15] [cursor=pointer]
+        - button "設定" [ref=e16] [cursor=pointer]
+      - paragraph [ref=e17]: "←→: 移動 | ↑/W: 回転 | Space: ドロップ | Shift: ホールド"
+    - generic [ref=e20]:
+      - generic [ref=e21]:
+        - generic [ref=e22]: ルールカード
+        - heading "PURIFY" [level=2] [ref=e23]
+        - paragraph [ref=e24]: 3セルのシャードと、たまに落ちる救援コロニーで汚染コアを同色クラスターに取り込んで浄化する隠しモード。
+      - generic [ref=e25]:
+        - generic [ref=e26]:
+          - generic [ref=e27]:
+            - heading "MISSION" [level=3] [ref=e28]
+            - generic [ref=e29]:
+              - paragraph [ref=e30]: 落ちてくるのは 3セルの折れたシャードで、単色のときも先端だけ別色のときもあります。
+              - paragraph [ref=e31]: 光るリング付きのコアを、同じ色のブロック5マス以上のクラスターに含めると、その塊ごと消せます。
+              - paragraph [ref=e32]: すべてのコアを消すと次のエリアへ進みます。
+          - generic [ref=e33]:
+            - heading "FLOW" [level=3] [ref=e34]
+            - generic [ref=e35]:
+              - paragraph [ref=e36]: 一直線ではなく、上下左右につながった同色クラスターで判定します。
+              - paragraph [ref=e37]: コアは固定されたままで、通常ブロックだけが落下して連鎖します。
+          - generic [ref=e38]:
+            - heading "SPECIAL" [level=3] [ref=e39]
+            - generic [ref=e40]:
+              - paragraph [ref=e41]: PURIFY ではスワイプは使わず、左右・ROT・DROP・DOWN・HOLD のボタン操作が中心です。
+              - paragraph [ref=e42]: 危ない盤面では救援コロニーが落ちてきて、着地地点の広範囲をまとめて浄化します。
+              - paragraph [ref=e43]: 連鎖しながら複数コアを巻き込むと、一気に高得点になります。
+        - generic [ref=e44]:
+          - generic [ref=e45]:
+            - heading "CORE PURGE" [level=3] [ref=e46]
+            - paragraph [ref=e47]: 光るコアを同色5マス以上のクラスターに巻き込むと、その塊ごと消えます。
+          - generic [ref=e150]:
+            - generic [ref=e153]: 通常ブロック
+            - generic [ref=e157]: 汚染コア
+            - generic [ref=e164]: 救援コロニー
+            - generic [ref=e167]: 浄化クラスター
+      - generic [ref=e168]:
+        - heading "操作" [level=3] [ref=e169]
+        - generic [ref=e170]:
+          - paragraph [ref=e171]: "キーボード: ← → 移動 / ↑ 回転 / Space ハードドロップ / Shift ホールド"
+          - paragraph [ref=e172]: "スマホ: 左右キーで移動 / ROTで回転 / DROPで即落下 / DOWNを押している間は高速落下 / HOLDで保持"
+          - paragraph [ref=e173]: 盤面タップでも回転、長押しでもHOLDできます。スワイプでは動かず、触った場所への位置移動もしません。
+      - generic [ref=e174]:
+        - paragraph [ref=e175]: この表示は設定でオフにできます。
+        - generic [ref=e176]:
+          - button "戻る" [ref=e177] [cursor=pointer]
+          - button "このルールで開始" [ref=e178] [cursor=pointer]
+  - alert [ref=e18]

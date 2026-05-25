@@ -1,4 +1,11 @@
-import { BOARD_WIDTH, COMET_PROBABILITY, BOMB_PROBABILITY } from '@/lib/constants';
+import {
+  BOARD_WIDTH,
+  CLUSTER_BOMB_PROBABILITY,
+  COMET_PROBABILITY,
+  FIRE_BLOCK_PROBABILITY,
+  NORMAL_BOMB_PROBABILITY,
+  THUNDER_BOMB_PROBABILITY,
+} from '@/lib/constants';
 import { Piece, STANDARD_PIECES } from './Piece';
 import { PieceDefinition } from './types';
 
@@ -8,80 +15,87 @@ const COMET_PIECE = ALL_PIECES[ALL_PIECES.length - 1];
 
 export class PieceFactory {
   private bag: PieceDefinition[] = [];
+  /** Pre-built queue of upcoming piece definitions (includes comets) */
+  private queue: PieceDefinition[] = [];
+  private pieceSet: PieceDefinition[] = [...STANDARD_PIECES];
+  private allowComets: boolean = true;
   /** Whether to assign bomb cells to new pieces */
   assignBombs: boolean = false;
 
   constructor() {
     this.refillBag();
+    this.fillQueue();
   }
 
   private refillBag(): void {
-    // 7-bag randomizer: shuffle all 7 standard pieces
-    this.bag = [...STANDARD_PIECES];
+    this.bag = [...this.pieceSet];
     for (let i = this.bag.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [this.bag[i], this.bag[j]] = [this.bag[j], this.bag[i]];
     }
   }
 
-  next(): Piece {
-    // Small chance of comet instead of next bag piece
-    if (Math.random() < COMET_PROBABILITY) {
-      return this.createPiece(COMET_PIECE);
+  /** Ensure the queue has at least `min` pieces ready */
+  private fillQueue(min: number = 5): void {
+    while (this.queue.length < min) {
+      // Small chance of comet instead of next bag piece
+      if (this.allowComets && Math.random() < COMET_PROBABILITY) {
+        this.queue.push(COMET_PIECE);
+      } else {
+        if (this.bag.length === 0) {
+          this.refillBag();
+        }
+        this.queue.push(this.bag.pop()!);
+      }
     }
+  }
 
-    if (this.bag.length === 0) {
-      this.refillBag();
-    }
-    const def = this.bag.pop()!;
-    return this.createPiece(def);
+  next(): Piece {
+    this.fillQueue();
+    const def = this.queue.shift()!;
+    this.fillQueue();
+    return this.createPieceFromDefinition(def);
   }
 
   peek(count: number): PieceDefinition[] {
-    // Preview next pieces without consuming them
-    // bag is used as a stack (pop from end), so preview from end backwards
-    const result: PieceDefinition[] = [];
-    const tempBag = [...this.bag];
-
-    for (let i = 0; i < count; i++) {
-      if (tempBag.length === 0) {
-        const newBag = [...STANDARD_PIECES];
-        for (let j = newBag.length - 1; j > 0; j--) {
-          const k = Math.floor(Math.random() * (j + 1));
-          [newBag[j], newBag[k]] = [newBag[k], newBag[j]];
-        }
-        tempBag.push(...newBag);
-      }
-      result.push(tempBag.pop()!);
-    }
-    return result;
+    this.fillQueue(count);
+    return this.queue.slice(0, count);
   }
 
-  private createPiece(def: PieceDefinition): Piece {
+  createPieceFromDefinition(def: PieceDefinition): Piece {
     const matrixWidth = def.matrices[0][0].length;
     const startX = Math.floor((BOARD_WIDTH - matrixWidth) / 2);
     const piece = new Piece(def, startX, 0);
 
-    // Assign bomb cells if in bomber mode
-    if (this.assignBombs) {
-      // O-piece has a 25% chance to become a mega bomb (all cells are bombs)
-      if (def.name === 'O' && Math.random() < 0.25) {
-        piece.isMegaBomb = true;
-        const matrix = piece.getMatrix();
-        for (let row = 0; row < matrix.length; row++) {
-          for (let col = 0; col < matrix[row].length; col++) {
-            if (matrix[row][col] === 1) {
-              piece.bombCells.add(`${col},${row}`);
-            }
+    // Assign bomber payload cells if in bomber mode.
+    if (this.assignBombs && def.special !== 'supportWeight') {
+      const matrix = piece.getMatrix();
+      for (let row = 0; row < matrix.length; row++) {
+        for (let col = 0; col < matrix[row].length; col++) {
+          if (matrix[row][col] !== 1) continue;
+
+          const roll = Math.random();
+          const key = `${col},${row}`;
+          if (roll < FIRE_BLOCK_PROBABILITY) {
+            piece.fireCells.add(key);
+            continue;
           }
-        }
-      } else {
-        const matrix = piece.getMatrix();
-        for (let row = 0; row < matrix.length; row++) {
-          for (let col = 0; col < matrix[row].length; col++) {
-            if (matrix[row][col] === 1 && Math.random() < BOMB_PROBABILITY) {
-              piece.bombCells.add(`${col},${row}`);
-            }
+
+          if (roll < FIRE_BLOCK_PROBABILITY + NORMAL_BOMB_PROBABILITY) {
+            piece.bombCells.add(key);
+            piece.bombKinds.set(key, 'normal');
+            continue;
+          }
+
+          if (roll < FIRE_BLOCK_PROBABILITY + NORMAL_BOMB_PROBABILITY + THUNDER_BOMB_PROBABILITY) {
+            piece.bombCells.add(key);
+            piece.bombKinds.set(key, 'thunder');
+            continue;
+          }
+
+          if (roll < FIRE_BLOCK_PROBABILITY + NORMAL_BOMB_PROBABILITY + THUNDER_BOMB_PROBABILITY + CLUSTER_BOMB_PROBABILITY) {
+            piece.bombCells.add(key);
+            piece.bombKinds.set(key, 'cluster');
           }
         }
       }
@@ -92,6 +106,18 @@ export class PieceFactory {
 
   reset(): void {
     this.bag = [];
+    this.queue = [];
     this.refillBag();
+    this.fillQueue();
+  }
+
+  configure(options: { pieceSet?: PieceDefinition[]; allowComets?: boolean }): void {
+    if (options.pieceSet && options.pieceSet.length > 0) {
+      this.pieceSet = [...options.pieceSet];
+    } else {
+      this.pieceSet = [...STANDARD_PIECES];
+    }
+    this.allowComets = options.allowComets ?? true;
+    this.reset();
   }
 }

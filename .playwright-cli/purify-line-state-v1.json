@@ -1,0 +1,13 @@
+{
+  "purifySeed": {
+    "mode": "purify",
+    "boardSeeded": true,
+    "mechanic": "line-clear"
+  },
+  "purifyResolved": {
+    "mode": "purify",
+    "chainText": "Crush",
+    "score": 180,
+    "remainingCores": 1
+  }
+}

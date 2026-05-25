@@ -37,7 +37,7 @@ export class EffectManager {
   rowFlashTimer: number = 0;
 
   /** Spawn explosion particles from a board cell (pixel coords) */
-  spawnExplosion(cx: number, cy: number, color: string, intensity: number = 1): void {
+  spawnExplosion(cx: number, cy: number, color: string, intensity: number = 1, durationMs: number = 800): void {
     const count = Math.floor(6 + intensity * 4);
     for (let i = 0; i < count; i++) {
       const angle = (Math.PI * 2 / count) * i + (Math.random() - 0.5) * 0.8;
@@ -49,8 +49,8 @@ export class EffectManager {
         vy: Math.sin(angle) * speed - 30, // slight upward bias
         color,
         size: 2 + Math.random() * 3 * intensity,
-        life: 400 + Math.random() * 400,
-        maxLife: 800,
+        life: durationMs * (0.55 + Math.random() * 0.45),
+        maxLife: durationMs,
       });
     }
   }
@@ -77,11 +77,11 @@ export class EffectManager {
   }
 
   /** Spawn a blast ring expanding outward from a center point */
-  spawnBlastRing(cx: number, cy: number, maxRadius: number): void {
+  spawnBlastRing(cx: number, cy: number, maxRadius: number, durationMs: number = 500): void {
     this.blastRings.push({
       cx, cy, maxRadius,
-      life: 500,
-      maxLife: 500,
+      life: durationMs,
+      maxLife: durationMs,
     });
   }
 

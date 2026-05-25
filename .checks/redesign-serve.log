@@ -1,0 +1,75 @@
+ INFO  Accepting connections at http://localhost:59459
+ HTTP  2026/3/26 23:32:57 127.0.0.1 GET /game
+ HTTP  2026/3/26 23:32:57 127.0.0.1 Returned 200 in 29 ms
+ HTTP  2026/3/26 23:32:57 127.0.0.1 GET /_next/static/chunks/87e29d9586d1d0dd.css
+ HTTP  2026/3/26 23:32:57 127.0.0.1 GET /_next/static/chunks/b9a0fabf54a78ef2.js
+ HTTP  2026/3/26 23:32:57 127.0.0.1 Returned 200 in 4 ms
+ HTTP  2026/3/26 23:32:57 127.0.0.1 Returned 200 in 3 ms
+ HTTP  2026/3/26 23:32:57 127.0.0.1 GET /_next/static/chunks/806bdb8e4a6a9b95.js
+ HTTP  2026/3/26 23:32:57 127.0.0.1 GET /_next/static/chunks/d1e380e53588e373.js
+ HTTP  2026/3/26 23:32:57 127.0.0.1 GET /_next/static/chunks/f2f58a7e93290fbb.js
+ HTTP  2026/3/26 23:32:57 127.0.0.1 GET /_next/static/chunks/3418b437dfe4822e.js
+ HTTP  2026/3/26 23:32:57 127.0.0.1 GET /_next/static/chunks/turbopack-0ef59a22f2feb809.js
+ HTTP  2026/3/26 23:32:57 127.0.0.1 Returned 200 in 4 ms
+ HTTP  2026/3/26 23:32:57 127.0.0.1 Returned 200 in 3 ms
+ HTTP  2026/3/26 23:32:57 127.0.0.1 GET /_next/static/chunks/ff1a16fafef87110.js
+ HTTP  2026/3/26 23:32:57 127.0.0.1 Returned 200 in 5 ms
+ HTTP  2026/3/26 23:32:57 127.0.0.1 Returned 200 in 4 ms
+ HTTP  2026/3/26 23:32:57 127.0.0.1 Returned 200 in 7 ms
+ HTTP  2026/3/26 23:32:57 127.0.0.1 Returned 200 in 6 ms
+ HTTP  2026/3/26 23:32:57 127.0.0.1 GET /_next/static/chunks/730fb7992de3a059.js
+ HTTP  2026/3/26 23:32:57 127.0.0.1 GET /_next/static/chunks/4400e76cb0a7a561.js
+ HTTP  2026/3/26 23:32:57 127.0.0.1 GET /_next/static/chunks/38fa88b2830ce8e6.js
+ HTTP  2026/3/26 23:32:57 127.0.0.1 Returned 200 in 7 ms
+ HTTP  2026/3/26 23:32:57 127.0.0.1 Returned 200 in 5 ms
+ HTTP  2026/3/26 23:32:57 127.0.0.1 Returned 200 in 6 ms
+ HTTP  2026/3/26 23:32:57 127.0.0.1 GET /maskable-icon.svg
+ HTTP  2026/3/26 23:32:57 127.0.0.1 Returned 200 in 3 ms
+ HTTP  2026/3/26 23:32:57 127.0.0.1 GET /sw.js
+ HTTP  2026/3/26 23:32:57 127.0.0.1 Returned 200 in 1 ms
+ HTTP  2026/3/26 23:32:57 127.0.0.1 GET /
+ HTTP  2026/3/26 23:32:57 127.0.0.1 GET /game/
+ HTTP  2026/3/26 23:32:57 127.0.0.1 GET /manifest.webmanifest
+ HTTP  2026/3/26 23:32:57 127.0.0.1 Returned 200 in 1 ms
+ HTTP  2026/3/26 23:32:57 127.0.0.1 Returned 200 in 2 ms
+ HTTP  2026/3/26 23:32:57 127.0.0.1 Returned 200 in 1 ms
+ HTTP  2026/3/26 23:32:57 127.0.0.1 GET /icon.svg
+ HTTP  2026/3/26 23:32:57 127.0.0.1 GET /maskable-icon.svg
+ HTTP  2026/3/26 23:32:57 127.0.0.1 Returned 304 in 1 ms
+ HTTP  2026/3/26 23:32:57 127.0.0.1 Returned 200 in 3 ms
+ HTTP  2026/3/26 23:32:57 127.0.0.1 GET /icon.svg
+ HTTP  2026/3/26 23:32:57 127.0.0.1 Returned 304 in 1 ms
+ HTTP  2026/3/26 23:32:57 127.0.0.1 GET /icon.svg
+ HTTP  2026/3/26 23:32:57 127.0.0.1 Returned 304 in 1 ms
+ HTTP  2026/3/26 23:33:43 127.0.0.1 GET /game
+ HTTP  2026/3/26 23:33:43 127.0.0.1 Returned 304 in 1 ms
+ HTTP  2026/3/26 23:33:43 127.0.0.1 GET /_next/static/chunks/87e29d9586d1d0dd.css
+ HTTP  2026/3/26 23:33:43 127.0.0.1 Returned 304 in 0 ms
+ HTTP  2026/3/26 23:33:43 127.0.0.1 GET /_next/static/chunks/b9a0fabf54a78ef2.js
+ HTTP  2026/3/26 23:33:43 127.0.0.1 Returned 304 in 1 ms
+ HTTP  2026/3/26 23:33:43 127.0.0.1 GET /_next/static/chunks/806bdb8e4a6a9b95.js
+ HTTP  2026/3/26 23:33:43 127.0.0.1 Returned 304 in 1 ms
+ HTTP  2026/3/26 23:33:43 127.0.0.1 GET /_next/static/chunks/d1e380e53588e373.js
+ HTTP  2026/3/26 23:33:43 127.0.0.1 Returned 304 in 1 ms
+ HTTP  2026/3/26 23:33:43 127.0.0.1 GET /_next/static/chunks/f2f58a7e93290fbb.js
+ HTTP  2026/3/26 23:33:43 127.0.0.1 Returned 304 in 1 ms
+ HTTP  2026/3/26 23:33:43 127.0.0.1 GET /_next/static/chunks/turbopack-0ef59a22f2feb809.js
+ HTTP  2026/3/26 23:33:43 127.0.0.1 Returned 304 in 1 ms
+ HTTP  2026/3/26 23:33:43 127.0.0.1 GET /_next/static/chunks/3418b437dfe4822e.js
+ HTTP  2026/3/26 23:33:43 127.0.0.1 GET /_next/static/chunks/ff1a16fafef87110.js
+ HTTP  2026/3/26 23:33:43 127.0.0.1 GET /_next/static/chunks/730fb7992de3a059.js
+ HTTP  2026/3/26 23:33:43 127.0.0.1 Returned 304 in 1 ms
+ HTTP  2026/3/26 23:33:43 127.0.0.1 Returned 304 in 1 ms
+ HTTP  2026/3/26 23:33:43 127.0.0.1 GET /_next/static/chunks/4400e76cb0a7a561.js
+ HTTP  2026/3/26 23:33:43 127.0.0.1 Returned 304 in 1 ms
+ HTTP  2026/3/26 23:33:43 127.0.0.1 GET /_next/static/chunks/38fa88b2830ce8e6.js
+ HTTP  2026/3/26 23:33:43 127.0.0.1 Returned 304 in 1 ms
+ HTTP  2026/3/26 23:33:43 127.0.0.1 Returned 304 in 1 ms
+ HTTP  2026/3/26 23:33:43 127.0.0.1 GET /maskable-icon.svg
+ HTTP  2026/3/26 23:33:43 127.0.0.1 Returned 304 in 1 ms
+ HTTP  2026/3/26 23:33:43 127.0.0.1 GET /icon.svg
+ HTTP  2026/3/26 23:33:43 127.0.0.1 Returned 304 in 0 ms
+ HTTP  2026/3/26 23:33:44 127.0.0.1 GET /icon.svg
+ HTTP  2026/3/26 23:33:44 127.0.0.1 Returned 304 in 1 ms
+ HTTP  2026/3/26 23:33:45 127.0.0.1 GET /sw.js
+ HTTP  2026/3/26 23:33:45 127.0.0.1 Returned 304 in 1 ms

@@ -1,0 +1,21 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e27]:
+    - heading "GAME OVER" [level=1] [ref=e28]
+    - paragraph [ref=e29]: 0 点
+    - paragraph [ref=e30]: "ハイスコア: 0"
+    - generic [ref=e31]:
+      - textbox "名前を入力" [ref=e32]: Tester
+      - button "送信" [ref=e33] [cursor=pointer]
+    - generic [ref=e34]:
+      - button "CLASSIC" [ref=e35] [cursor=pointer]
+      - button "BOMBER" [ref=e36] [cursor=pointer]
+    - generic [ref=e37]:
+      - button "RETRY" [ref=e38] [cursor=pointer]
+      - button "🏆" [ref=e39] [cursor=pointer]
+    - generic [ref=e40]:
+      - button "ルール" [ref=e41] [cursor=pointer]
+      - button "設定" [ref=e42] [cursor=pointer]
+    - button "タイトルへ" [ref=e43] [cursor=pointer]
+  - button "Open Next.js Dev Tools" [ref=e22] [cursor=pointer]:
+    - img [ref=e23]
+  - alert [ref=e26]

@@ -1,0 +1,48 @@
+{
+  "armorySeed": {
+    "mode": "armory",
+    "boardSeeded": true,
+    "weapon": "pan",
+    "junkMixed": true
+  },
+  "armoryResolved": {
+    "mode": "armory",
+    "chainText": "PAN SWEEP",
+    "weapons": 1,
+    "score": 624
+  },
+  "classicSeed": {
+    "mode": "classic",
+    "currentPiece": "Nova",
+    "occupiedCells": [
+      {
+        "x": 5,
+        "y": -1
+      },
+      {
+        "x": 4,
+        "y": 0
+      },
+      {
+        "x": 5,
+        "y": 0
+      },
+      {
+        "x": 6,
+        "y": 0
+      },
+      {
+        "x": 5,
+        "y": 1
+      }
+    ]
+  },
+  "classicLock": {
+    "currentPiece": "Nova",
+    "chainText": "",
+    "filledCells": 0,
+    "filled": [],
+    "showsGameOver": true
+  },
+  "errors": []
+}

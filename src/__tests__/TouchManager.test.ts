@@ -37,22 +37,16 @@ function createMockElement() {
 
 describe('TouchManager', () => {
   let actions: InputAction[];
-  let moveColumns: number[];
   let manager: TouchManager;
   let element: ReturnType<typeof createMockElement>;
 
   beforeEach(() => {
     vi.useFakeTimers();
     actions = [];
-    moveColumns = [];
-    manager = new TouchManager(
-      (action) => actions.push(action),
-      (col) => moveColumns.push(col),
-    );
+    manager = new TouchManager((action) => actions.push(action));
     element = createMockElement();
     manager.bind(element);
-    // Set board layout: board starts at x=50, cell size=30
-    manager.updateLayout({ offsetX: 50, cellSize: 30 });
+    manager.updateLayout();
   });
 
   afterEach(() => {
@@ -99,56 +93,22 @@ describe('TouchManager', () => {
     expect(actions).toEqual(['hold']);
   });
 
-  describe('position-based horizontal movement', () => {
-    it('moves to column on touchstart', () => {
-      // Touch at x=110, board offsetX=50, cellSize=30
-      // Column = floor((110 - 50) / 30) = floor(2.0) = 2
-      element._trigger('touchstart', createTouchEvent('touchstart', 110, 200));
-
-      expect(moveColumns).toContain(2);
-    });
-
-    it('moves to new column on horizontal touchmove', () => {
-      element._trigger('touchstart', createTouchEvent('touchstart', 110, 200));
-      moveColumns.length = 0; // clear initial move
-
-      // Move horizontally past dead zone (10px) to a new column
-      // x=170 → column = floor((170 - 50) / 30) = floor(4.0) = 4
-      element._trigger('touchmove', createTouchEvent('touchmove', 170, 200));
-
-      expect(moveColumns).toContain(4);
-    });
-
-    it('does not re-emit for same column', () => {
-      // Touch at column 2
-      element._trigger('touchstart', createTouchEvent('touchstart', 110, 200));
-      moveColumns.length = 0;
-
-      // Move slightly within same column (x=115 → still column 2)
-      element._trigger('touchmove', createTouchEvent('touchmove', 125, 200));
-
-      // No new column emission since it's the same column
-      expect(moveColumns.length).toBe(0);
-    });
-  });
-
-  it('downward swipe triggers down action', () => {
+  it('dragging no longer triggers soft drop', () => {
     element._trigger('touchstart', createTouchEvent('touchstart', 100, 100));
-
     element._trigger('touchmove', createTouchEvent('touchmove', 105, 140));
+    vi.advanceTimersByTime(50);
+    element._trigger('touchend', createTouchEvent('touchend', 105, 140));
 
-    expect(actions).toContain('down');
+    expect(actions).toEqual([]);
   });
 
-  it('upward swipe triggers hardDrop', () => {
+  it('upward swipe no longer triggers hard drop', () => {
     element._trigger('touchstart', createTouchEvent('touchstart', 100, 200));
-
     element._trigger('touchmove', createTouchEvent('touchmove', 100, 100));
-
     vi.advanceTimersByTime(50);
     element._trigger('touchend', createTouchEvent('touchend', 100, 100));
 
-    expect(actions).toContain('hardDrop');
+    expect(actions).toEqual([]);
   });
 
   it('swipe cancels long press timer', () => {
@@ -159,6 +119,15 @@ describe('TouchManager', () => {
     vi.advanceTimersByTime(400);
 
     expect(actions).not.toContain('hold');
+  });
+
+  it('horizontal swipes no longer move the piece to the touched column', () => {
+    element._trigger('touchstart', createTouchEvent('touchstart', 110, 200));
+    element._trigger('touchmove', createTouchEvent('touchmove', 220, 205));
+    vi.advanceTimersByTime(50);
+    element._trigger('touchend', createTouchEvent('touchend', 220, 205));
+
+    expect(actions).toEqual([]);
   });
 
   it('prevents default on all events', () => {

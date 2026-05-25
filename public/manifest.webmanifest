@@ -1,0 +1,25 @@
+{
+  "name": "Meteor Crush",
+  "short_name": "MeteorCrush",
+  "description": "Space-themed fragment puzzle with line clears, bomb chains, ARMORY 2x2 weapon-plate attacks, and core-cluster purification.",
+  "start_url": "/game/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#0a0a1a",
+  "theme_color": "#0a0a1a",
+  "icons": [
+    {
+      "src": "/icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {
+      "src": "/maskable-icon.svg",
+      "sizes": "512x512",
+      "type": "image/svg+xml",
+      "purpose": "maskable"
+    }
+  ]
+}

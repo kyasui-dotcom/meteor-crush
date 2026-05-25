@@ -1,0 +1,43 @@
+- generic [active] [ref=e1]:
+  - main [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e4]:
+        - generic [ref=e5]:
+          - generic [ref=e6]: ブラウザで遊べる落ちものパズル
+          - generic [ref=e7]:
+            - generic [ref=e8]: 言語
+            - generic [ref=e9]:
+              - button "日本語" [ref=e10] [cursor=pointer]
+              - button "English" [ref=e11] [cursor=pointer]
+        - generic [ref=e12]:
+          - heading "Meteor Crush" [level=1] [ref=e13]
+          - paragraph [ref=e14]: 隕石ブロックを積み、爆破し、浄化する。Meteor Crush はブラウザですぐ遊べる宇宙系の落ちものパズルゲームです。クラシックなライン消し、爆弾連鎖、隠しモード PURIFY をひとつに収録しています。
+        - generic [ref=e15]:
+          - link "ゲームを始める" [ref=e16] [cursor=pointer]:
+            - /url: /game/
+          - link "プライバシーポリシー" [ref=e17] [cursor=pointer]:
+            - /url: /privacy/
+        - generic [ref=e18]:
+          - generic [ref=e19]: ブラウザですぐ遊べる
+          - generic [ref=e20]: タッチ操作対応
+          - generic [ref=e21]: CLASSIC / BOMBER / PURIFY
+          - generic [ref=e22]: 基本プレイ無料
+      - generic [ref=e23]:
+        - heading "ゲームモード" [level=2] [ref=e24]
+        - generic [ref=e25]:
+          - article [ref=e26]:
+            - strong [ref=e27]: CLASSIC
+            - paragraph [ref=e28]: 横一列をそろえて消す王道モード。テンポよく積みながら、ハイスコア更新を狙います。
+          - article [ref=e29]:
+            - strong [ref=e30]: BOMBER
+            - paragraph [ref=e31]: 爆弾入りのラインを起爆して、爆風と落下で連鎖を伸ばす爽快モードです。
+          - article [ref=e32]:
+            - strong [ref=e33]: PURIFY
+            - paragraph [ref=e34]: ランダムな2ブロックと救援コロニーを使って、固定された汚染コアを浄化する隠しモードです。
+      - generic [ref=e35]:
+        - heading "Meteor Crush の特徴" [level=2] [ref=e36]
+        - list [ref=e37]:
+          - listitem [ref=e38]: 短時間でも遊びやすい、スピード感のあるアーケードパズル。
+          - listitem [ref=e39]: モードごとに、積み方・爆破・浄化で異なる攻略感がある。
+          - listitem [ref=e40]: 隠し要素やランキング、イースターエッグで繰り返し遊びやすい。
+  - alert [ref=e41]

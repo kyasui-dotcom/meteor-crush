@@ -1,0 +1,14 @@
+- generic [active] [ref=e1]:
+  - generic [ref=e5]:
+    - heading "METEOR CRUSH" [level=1] [ref=e6]
+    - generic [ref=e7]:
+      - button "CLASSIC" [ref=e8] [cursor=pointer]
+      - button "BOMBER" [ref=e9] [cursor=pointer]
+    - paragraph [ref=e10]: Standard meteor stacking
+    - button "START" [ref=e11] [cursor=pointer]
+    - generic [ref=e12]:
+      - button "RULES" [ref=e13] [cursor=pointer]
+      - button "🏆 RANKING" [ref=e14] [cursor=pointer]
+      - button "SETTINGS" [ref=e15] [cursor=pointer]
+    - paragraph [ref=e16]: "←→: Move | ↑/W: Rotate | Space: Drop | Shift: Hold"
+  - alert [ref=e17]

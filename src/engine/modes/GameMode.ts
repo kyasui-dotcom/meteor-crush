@@ -1,5 +1,5 @@
 import { Board } from '../Board';
-import { GameModeType } from '../types';
+import { GameModeType, PieceDefinition } from '../types';
 
 export interface LineClearEvent {
   linesCleared: number;
@@ -16,5 +16,8 @@ export interface GameMode {
 
   onLineClear(linesCleared: number, level: number): LineClearEvent;
   isGameOver(board: Board): boolean;
-  initializeBoard?(board: Board): void;
+  initializeBoard?(board: Board, stage: number): void;
+  getPieceSet?(): PieceDefinition[];
+  getSpawnOverride?(board: Board, stage: number, level: number): PieceDefinition | null;
+  allowComets?(): boolean;
 }

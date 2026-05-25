@@ -1,0 +1,19 @@
+{
+  "seed": {
+    "mode": "armory",
+    "boardSeeded": true,
+    "weapon": "katana",
+    "overdrive": true,
+    "chainTargets": [
+      "bomb",
+      "pan"
+    ]
+  },
+  "resolved": {
+    "mode": "armory",
+    "chainText": "Triple Crush",
+    "weapons": 3,
+    "score": 1302
+  },
+  "errors": []
+}

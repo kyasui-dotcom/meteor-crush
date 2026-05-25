@@ -1,0 +1,8 @@
+name = "meteor-crush-ranking"
+main = "src/index.ts"
+compatibility_date = "2024-12-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "meteor-crush-scores"
+database_id = "8b72a1c1-c7c3-4308-a991-629b84b9add2"

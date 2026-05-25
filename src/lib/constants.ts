@@ -32,30 +32,39 @@ export const SCORE_HARD_DROP = 2; // per cell
 // Comet (6-block piece)
 export const COMET_PROBABILITY = 0.05; // 5% chance
 
-// Bomb
-export const BOMB_PROBABILITY = 0.15; // 15% of blocks become bombs in Bomber mode
+// Bomber mode payload mix
+export const FIRE_BLOCK_PROBABILITY = 0.03;
+export const NORMAL_BOMB_PROBABILITY = 0.05;
+export const THUNDER_BOMB_PROBABILITY = 0.05;
+export const CLUSTER_BOMB_PROBABILITY = 0.05;
 export const BOMB_RADIUS_SMALL = 1;
 export const BOMB_RADIUS_MEDIUM = 2;
 export const BOMB_RADIUS_LARGE = 3;
 export const BOMB_RADIUS_GIANT = 5; // ad reward
 
-// Chain score multipliers (Bomber/Gravity)
-export const CHAIN_MULTIPLIERS = [1, 1, 3, 5, 10]; // index = chain count, 4+ = x10
-
-// Ad gate
-export const AD_LINE_THRESHOLD = 30;
-
 // Colors for block types (meteor/mineral palette)
 export const BLOCK_COLORS = [
-  '#5ec4c4', // I - teal mineral
+  '#4fd8ff', // I - bright cyan mineral
   '#c4a840', // O - golden ore
   '#8855bb', // T - amethyst
-  '#55a855', // S - jade
+  '#84d63b', // S - bright jade
   '#c44040', // Z - garnet
-  '#4466aa', // J - sapphire
+  '#2f63ff', // J - vivid sapphire
   '#b87830', // L - copper
   '#ff8830', // Comet - blazing orange
   '#ff2244', // Bomb - molten red
+  '#d7f2ff', // Rescue colony - support alloy
+  '#7f879a', // Support weight - steel ballast
+  '#7ab8ff', // Armory missile - sky alloy
+  '#ff9a5a', // Armory bomb - ignited shell
+  '#b8c4d4', // Armory tub - silver basin
+  '#f2bd54', // Armory pan - brass sweep
+  '#ffb347', // Fire block - open flame
+  '#8db8ff', // Thunder bomb - electric shell
+  '#ffd66f', // Cluster bomb - scatter charge
+  '#ff8fcf', // Armory katana - neon silk steel
+  '#d8e6ff', // Armory sword - bright forged steel
+  '#7be3b1', // Armory spear - jade shaft
 ];
 
 // Chain text

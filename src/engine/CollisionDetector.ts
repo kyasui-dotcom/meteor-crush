@@ -45,7 +45,7 @@ export class CollisionDetector {
 
   // SRS wall kick data (simplified)
   private static getWallKicks(piece: Piece, direction: 1 | -1): [number, number][] {
-    if (piece.definition.name === 'O') return [];
+    if (piece.definition.name === 'Slab') return [];
 
     if (piece.definition.isComet) {
       // Comet: wider kicks needed
@@ -55,8 +55,8 @@ export class CollisionDetector {
       ];
     }
 
-    if (piece.definition.name === 'I') {
-      // I-piece needs wider kicks
+    if (piece.definition.name === 'Nova' || piece.definition.name === 'Arc' || piece.definition.name === 'Vane') {
+      // Larger fragments benefit from one extra horizontal kick.
       return [
         [-1, 0], [1, 0], [-2, 0], [2, 0],
         [0, -1], [0, 1], [-1, -1], [1, -1],

@@ -1,0 +1,84 @@
+{
+  "before": {
+    "coordinateSystem": "board origin is top-left; x increases right; y increases downward; all 22 rows are rendered; rows 0-1 are the spawn warning zone",
+    "mode": "classic",
+    "state": "playing",
+    "score": 0,
+    "level": 0,
+    "lines": 0,
+    "speed": 1000,
+    "chainText": "",
+    "chainTimer": 0,
+    "chainEffectTier": -1,
+    "ghostY": 20,
+    "filledCellCount": 0,
+    "filledCells": [],
+    "currentPiece": {
+      "name": "Spark",
+      "x": 4,
+      "y": 0,
+      "rotation": 0,
+      "occupiedCells": [
+        {
+          "x": 5,
+          "y": 1
+        },
+        {
+          "x": 6,
+          "y": 1
+        },
+        {
+          "x": 7,
+          "y": 1
+        }
+      ]
+    },
+    "holdPiece": null,
+    "nextPieces": [
+      "Comet",
+      "Wave",
+      "Vane"
+    ]
+  },
+  "after": {
+    "coordinateSystem": "board origin is top-left; x increases right; y increases downward; all 22 rows are rendered; rows 0-1 are the spawn warning zone",
+    "mode": "classic",
+    "state": "playing",
+    "score": 0,
+    "level": 0,
+    "lines": 0,
+    "speed": 1000,
+    "chainText": "",
+    "chainTimer": 0,
+    "chainEffectTier": -1,
+    "ghostY": 20,
+    "filledCellCount": 0,
+    "filledCells": [],
+    "currentPiece": {
+      "name": "Spark",
+      "x": 4,
+      "y": 1,
+      "rotation": 0,
+      "occupiedCells": [
+        {
+          "x": 5,
+          "y": 2
+        },
+        {
+          "x": 6,
+          "y": 2
+        },
+        {
+          "x": 7,
+          "y": 2
+        }
+      ]
+    },
+    "holdPiece": null,
+    "nextPieces": [
+      "Comet",
+      "Wave",
+      "Vane"
+    ]
+  }
+}

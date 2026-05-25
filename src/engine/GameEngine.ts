@@ -1,6 +1,7 @@
 import {
   INITIAL_DROP_INTERVAL, SOFT_DROP_INTERVAL, LEVEL_SPEED_FACTOR,
   LINES_PER_LEVEL, LOCK_DELAY, BOMB_RADIUS_MEDIUM,
+  BOARD_WIDTH, BOARD_HEIGHT,
 } from '@/lib/constants';
 import { Board } from './Board';
 import { Piece } from './Piece';
@@ -8,12 +9,14 @@ import { PieceFactory } from './PieceFactory';
 import { CollisionDetector } from './CollisionDetector';
 import { LineClearResolver } from './LineClearResolver';
 import { BombResolver } from './BombResolver';
+import { ArmoryResolver } from './ArmoryResolver';
+import { CoreMatchResolver } from './CoreMatchResolver';
 import { ScoreCalculator } from './ScoreCalculator';
 import { ChainTextResolver } from './ChainTextResolver';
 import { InputManager } from './InputManager';
 import { GameMode, LineClearEvent } from './modes/GameMode';
 import { ClassicMode } from './modes/ClassicMode';
-import { GameState, PieceDefinition, VisualEvent } from './types';
+import { GameState, PieceDefinition, Position, VisualEvent } from './types';
 
 export interface GameCallbacks {
   onScoreChange?: (score: number) => void;
@@ -68,7 +71,7 @@ export class GameEngine {
   private bombExplosionDelay: number = 0;
   private static readonly BOMB_EXPLOSION_DELAY = 300; // ms between individual bomb blasts
   private isBombExploding: boolean = false;
-  private pendingRowsClear: number[] = [];
+  private purifyStage: number = 1;
 
   constructor(callbacks: GameCallbacks = {}) {
     this.board = new Board();
@@ -95,8 +98,14 @@ export class GameEngine {
     this.isLocking = false;
     this.visualEvents = [];
     this.gameOverTimer = 0;
+    this.purifyStage = 1;
 
+    this.pieceFactory.configure({
+      pieceSet: this.mode.getPieceSet?.(),
+      allowComets: this.mode.allowComets?.(),
+    });
     this.pieceFactory.assignBombs = this.mode.shouldIncludeBombs();
+    this.mode.initializeBoard?.(this.board, this.purifyStage);
     this.updateNextPieces();
     this.spawnPiece();
     this.state = 'playing';
@@ -274,21 +283,57 @@ export class GameEngine {
     if (!this.currentPiece) return;
 
     const useBombs = this.mode.shouldIncludeBombs();
+    const lockedPiece = this.currentPiece;
+    const occupiedCells = lockedPiece.getOccupiedCells();
+    if (occupiedCells.some((cell) => !this.board.isInBounds(cell.x, cell.y))) {
+      this.stop();
+      return;
+    }
+    const lockedCells: Position[] = [];
 
     // Place piece on board
-    const matrix = this.currentPiece.getMatrix();
+    const matrix = lockedPiece.getMatrix();
     for (let row = 0; row < matrix.length; row++) {
       for (let col = 0; col < matrix[row].length; col++) {
         if (matrix[row][col] === 1) {
-          const bx = this.currentPiece.x + col;
-          const by = this.currentPiece.y + row;
-          const isBomb = useBombs && this.currentPiece.isBombAt(col, row);
+          const bx = lockedPiece.x + col;
+          const by = lockedPiece.y + row;
+          const isBomb = useBombs && lockedPiece.isBombAt(col, row);
+          const isFire = useBombs && lockedPiece.isFireAt(col, row);
+          const bombKind = isBomb ? lockedPiece.getBombKindAt(col, row) : null;
+          const fragment = lockedPiece.getArmoryFragmentAt(col, row);
+          lockedCells.push({ x: bx, y: by });
           this.board.setCell(bx, by, {
             type: isBomb ? 'bomb' : 'block',
-            color: isBomb ? 8 : this.currentPiece.definition.color,
-            megaBomb: isBomb && this.currentPiece.isMegaBomb ? true : undefined,
+            color: isBomb
+              ? bombKind === 'thunder'
+                ? 16
+                : bombKind === 'cluster'
+                  ? 17
+                  : 8
+              : isFire
+                ? 15
+                : lockedPiece.getColorAt(col, row),
+            megaBomb: undefined,
+            megaBombAnchorX: undefined,
+            megaBombAnchorY: undefined,
+            fire: isFire ? true : undefined,
+            bombKind: bombKind ?? undefined,
+            weaponId: fragment?.weaponId,
+            fragmentIndex: fragment?.fragmentIndex,
           });
         }
+      }
+    }
+
+    if (lockedPiece.definition.special === 'supportWeight') {
+      const compressedCells = this.applySupportWeight(lockedPiece);
+      lockedCells.push(...compressedCells);
+
+      if (compressedCells.length > 0) {
+        this.activeChainText = 'ANCHOR DROP';
+        this.chainTextTimer = 1800;
+        this.chainEffectTier = 1;
       }
     }
 
@@ -298,10 +343,19 @@ export class GameEngine {
     this.canHold = true;
 
     if (useBombs) {
-      // Promote any 2x2 bomb clusters to mega bombs
-      this.promoteBombClusters();
-      // Async chain resolution - will call afterChainComplete() when done
+      this.refreshMegaBombs();
+      // Async ignition / chain resolution - will call afterChainComplete() when done
       this.beginBomberChain();
+      return;
+    } else if (this.mode.type === 'armory') {
+      this.resolveArmoryMatches();
+      return;
+    } else if (this.mode.type === 'purify') {
+      if (lockedPiece.definition.special === 'rescueColony') {
+        this.resolvePurifyRescueColony(lockedCells);
+      } else {
+        this.resolvePurifyMatches();
+      }
       return;
     } else {
       this.resolveClassicLineClear();
@@ -343,11 +397,245 @@ export class GameEngine {
     }
   }
 
-  /** Bomber mode: begin async chain resolution */
+  private resolveArmoryMatches(): void {
+    let chainCount = 0;
+
+    while (true) {
+      const result = ArmoryResolver.resolve(this.board);
+      if (result.weapons.length === 0) break;
+
+      chainCount++;
+
+      for (const weapon of result.weapons) {
+        this.visualEvents.push({
+          type: 'explosion',
+          cells: weapon.effectCells,
+          chainCount,
+          blastCenters: weapon.blastCenters,
+          weaponId: weapon.weaponId,
+          power: weapon.power,
+          durationMs: weapon.power > 1 ? 1200 : undefined,
+        });
+      }
+
+      const armoryChainCount = Math.max(chainCount, result.weapons.length);
+      this.addScore(ScoreCalculator.getArmoryScore(
+        result.weapons.length,
+        result.destroyedCells.length,
+        armoryChainCount,
+        this.level,
+      ));
+
+      this.totalLinesCleared += result.weapons.length;
+      this.callbacks.onLinesChange?.(this.totalLinesCleared);
+      this.updateLevel();
+
+      const { text, tier } = ChainTextResolver.getSingleOrChainPresentation(
+        Math.max(chainCount, result.weapons.length),
+        result.weapons[0]?.activationText ?? '',
+        1,
+      );
+      this.activeChainText = text;
+      this.chainTextTimer = 2300;
+      this.chainEffectTier = tier;
+
+      this.board.applyGravity();
+    }
+
+    if (this.mode.isGameOver(this.board)) {
+      this.stop();
+      return;
+    }
+
+    this.spawnPiece();
+  }
+
+  private resolvePurifyMatches(): void {
+    let chainCount = 0;
+
+    while (true) {
+      const result = CoreMatchResolver.resolve(this.board);
+      if (result.clearedCells.length === 0) break;
+
+      chainCount++;
+      this.visualEvents.push({
+        type: 'explosion',
+        cells: result.clearedCells,
+        chainCount,
+      });
+
+      const score = ScoreCalculator.getPurifyScore(
+        result.clearedCells.length,
+        result.clearedCoreCount,
+        chainCount,
+        this.level,
+      );
+      this.addScore(score);
+
+      const equivalentLines = Math.max(1, Math.floor(result.clearedCells.length / 5));
+      this.totalLinesCleared += equivalentLines;
+      this.callbacks.onLinesChange?.(this.totalLinesCleared);
+      this.updateLevel();
+
+      const { text, tier } = ChainTextResolver.getSingleOrChainPresentation(
+        chainCount,
+        result.clearedCoreCount > 0 ? 'Purify' : 'Crush',
+        result.clearedCoreCount > 0 ? 2 : 1,
+      );
+      this.activeChainText = text;
+      this.chainEffectTier = tier;
+      this.chainTextTimer = 2200;
+
+      this.board.applyGravity();
+    }
+
+    if (this.board.getCoreCount() === 0) {
+      this.handlePurifyBoardClear();
+    }
+
+    if (this.mode.isGameOver(this.board)) {
+      this.stop();
+      return;
+    }
+
+    this.spawnPiece();
+  }
+
+  private resolvePurifyRescueColony(colonyCells: Position[]): void {
+    const impact = this.collectRescueColonyTargets(colonyCells);
+
+    if (impact.clearedCells.length > 0) {
+      this.visualEvents.push({
+        type: 'explosion',
+        cells: impact.clearedCells,
+        chainCount: 4,
+      });
+
+      this.addScore(ScoreCalculator.getRescueColonyScore(
+        impact.clearedCells.length,
+        impact.clearedCoreCount,
+        this.level,
+      ));
+
+      const equivalentLines = Math.max(2, Math.floor(impact.clearedCells.length / 6));
+      this.totalLinesCleared += equivalentLines;
+      this.callbacks.onLinesChange?.(this.totalLinesCleared);
+      this.updateLevel();
+
+      this.activeChainText = impact.clearedCoreCount > 0 ? 'RESCUE COLONY' : 'COLONY DROP';
+      this.chainTextTimer = 2400;
+      this.chainEffectTier = 3;
+    }
+
+    this.board.applyGravity();
+    this.resolvePurifyMatches();
+  }
+
+  private collectRescueColonyTargets(colonyCells: Position[]): { clearedCells: Position[]; clearedCoreCount: number } {
+    if (colonyCells.length === 0) {
+      return { clearedCells: [], clearedCoreCount: 0 };
+    }
+
+    const xs = colonyCells.map((cell) => cell.x);
+    const ys = colonyCells.map((cell) => cell.y);
+    const minX = Math.max(0, Math.min(...xs) - 2);
+    const maxX = Math.min(BOARD_WIDTH - 1, Math.max(...xs) + 2);
+    const minY = Math.max(0, Math.min(...ys) - 2);
+    const maxY = Math.min(BOARD_HEIGHT - 1, Math.max(...ys) + 2);
+
+    const clearedCells: Position[] = [];
+    let clearedCoreCount = 0;
+
+    for (let y = minY; y <= maxY; y++) {
+      for (let x = minX; x <= maxX; x++) {
+        const cell = this.board.getCell(x, y);
+        if (cell.type === 'empty') continue;
+
+        if (cell.core) {
+          clearedCoreCount++;
+        }
+
+        clearedCells.push({ x, y });
+        this.board.destroyCell(x, y);
+      }
+    }
+
+    return { clearedCells, clearedCoreCount };
+  }
+
+  private applySupportWeight(lockedPiece: Piece): Position[] {
+    const occupiedCells = lockedPiece.getOccupiedCells();
+    const affectedColumns = new Map<number, Set<number>>();
+    for (const cell of occupiedCells) {
+      const ys = affectedColumns.get(cell.x) ?? new Set<number>();
+      ys.add(cell.y);
+      affectedColumns.set(cell.x, ys);
+    }
+
+    const compressedCells: Position[] = [];
+    for (const [x, lockedYs] of affectedColumns) {
+      const settledCells: { y: number; cell: ReturnType<Board['getCell']> }[] = [];
+      for (let y = BOARD_HEIGHT - 1; y >= 0; y--) {
+        const cell = this.board.getCell(x, y);
+        if (cell.type === 'empty') continue;
+        if (lockedYs.has(y)) continue;
+        settledCells.push({ y, cell: { ...cell } });
+      }
+
+      for (let y = 0; y < BOARD_HEIGHT; y++) {
+        this.board.destroyCell(x, y);
+      }
+
+      for (const y of lockedYs) {
+        this.board.setCell(x, y, {
+          type: 'block',
+          color: lockedPiece.definition.color,
+        });
+      }
+
+      const availableYs: number[] = [];
+      for (let y = BOARD_HEIGHT - 1; y >= 0; y--) {
+        if (!lockedYs.has(y)) {
+          availableYs.push(y);
+        }
+      }
+
+      let writeIndex = 0;
+      for (const entry of settledCells) {
+        const writeY = availableYs[writeIndex++];
+        if (typeof writeY !== 'number') {
+          break;
+        }
+        this.board.setCell(x, writeY, entry.cell);
+        if (entry.y !== writeY) {
+          compressedCells.push({ x, y: writeY });
+        }
+      }
+    }
+
+    return compressedCells;
+  }
+
+  private handlePurifyBoardClear(): void {
+    this.addScore(ScoreCalculator.getPurifyWaveBonus(this.purifyStage));
+    this.totalLinesCleared += 2;
+    this.callbacks.onLinesChange?.(this.totalLinesCleared);
+    this.updateLevel();
+    this.purifyStage += 1;
+    this.board.reset();
+    this.mode.initializeBoard?.(this.board, this.purifyStage);
+    this.activeChainText = 'AREA PURIFIED';
+    this.chainTextTimer = 2600;
+    this.chainEffectTier = 3;
+  }
+
+  /** Bomber mode: begin async chain resolution (bombs only — no line clearing) */
   private beginBomberChain(): void {
-    const fullRows = this.board.getFullRows();
-    if (fullRows.length === 0) {
-      // No lines to clear, just proceed
+    this.refreshMegaBombs();
+    const ignitedBombs = BombResolver.findIgnitedBombs(this.board);
+
+    if (ignitedBombs.length === 0) {
+      // No bomb is touching fire → nothing to ignite, just proceed
       this.afterChainComplete();
       return;
     }
@@ -360,32 +648,18 @@ export class GameEngine {
     this.currentPiece = null; // hide piece during chain
 
     // Execute first step immediately
-    this.doChainStep(fullRows);
+    this.doChainStep(ignitedBombs);
   }
 
-  /** Execute one chain step: clear rows → explode bombs sequentially → gravity */
-  private doChainStep(fullRows: number[]): void {
-    // Emit line clear visual event
-    this.visualEvents.push({ type: 'line_clear', rows: [...fullRows] });
-
-    // Find bombs in the full rows BEFORE clearing
-    const bombsInRows = BombResolver.findBombsInRows(this.board, fullRows);
-
-    // Save rows to clear after all bombs finish
-    this.pendingRowsClear = fullRows;
-
-    if (bombsInRows.length > 0) {
-      // Start sequential bomb explosion
-      this.bombQueue = [...bombsInRows];
-      this.bombExplodedSet = new Set();
-      this.bombDestroyedSet = new Set();
-      this.isBombExploding = true;
-      // Explode first bomb immediately
-      this.explodeNextBomb();
-    } else {
-      // No bombs, just clear rows normally
-      this.finishChainStep(fullRows);
-    }
+  /** Execute one chain step: ignite all bombs currently touching fire, then resolve chained blasts */
+  private doChainStep(ignitedBombs: Position[]): void {
+    // Start sequential bomb explosion
+    this.bombQueue = [...ignitedBombs];
+    this.bombExplodedSet = new Set();
+    this.bombDestroyedSet = new Set();
+    this.isBombExploding = true;
+    // Explode first bomb immediately
+    this.explodeNextBomb();
   }
 
   /** Explode the next bomb in the queue */
@@ -393,14 +667,12 @@ export class GameEngine {
     // Find next un-exploded bomb
     while (this.bombQueue.length > 0) {
       const bomb = this.bombQueue.shift()!;
-      const bombKey = `${bomb.x},${bomb.y}`;
-
-      if (this.bombExplodedSet.has(bombKey)) continue;
-      this.bombExplodedSet.add(bombKey);
-
-      // Check if the bomb cell still exists (might have been destroyed by a previous explosion)
       const cell = this.board.getCell(bomb.x, bomb.y);
       if (cell.type !== 'bomb') continue;
+
+      const bombKey = BombResolver.getBombIdentityKey(this.board, bomb);
+      if (this.bombExplodedSet.has(bombKey)) continue;
+      this.bombExplodedSet.add(bombKey);
 
       // Explode this single bomb
       const result = BombResolver.explodeOne(
@@ -414,6 +686,7 @@ export class GameEngine {
         cells: result.destroyedCells,
         chainCount: this.bombExplodedSet.size,
         blastCenters: [{ x: result.center.x, y: result.center.y, radius: result.radius }],
+        durationMs: 1000,
       });
 
       // Add triggered bombs to queue
@@ -431,27 +704,19 @@ export class GameEngine {
 
     // All bombs processed, finish the chain step
     this.isBombExploding = false;
-    this.finishChainStep(this.pendingRowsClear);
+    this.finishChainStep();
   }
 
   /** Finish a chain step after all bombs have exploded */
-  private finishChainStep(fullRows: number[]): void {
-    // Clear the full rows
-    this.board.clearRows(fullRows);
-    this.totalChainLines += fullRows.length;
-
-    // Apply gravity
+  private finishChainStep(): void {
+    // Apply gravity so blocks above destroyed cells fall down
     this.board.applyGravity();
+    this.refreshMegaBombs();
 
     this.chainCount++;
 
     // Show chain text for this step
-    const text = this.chainCount > 1
-      ? ChainTextResolver.getChainText(this.chainCount)
-      : ChainTextResolver.getClassicText(fullRows.length);
-    const tier = this.chainCount > 1
-      ? ChainTextResolver.getEffectTier(this.chainCount)
-      : ChainTextResolver.getClassicEffectTier(fullRows.length);
+    const { text, tier } = ChainTextResolver.getChainPresentation(this.chainCount);
     if (text) {
       this.activeChainText = text;
       this.chainTextTimer = 2500;
@@ -464,34 +729,88 @@ export class GameEngine {
 
   /** Called by tick() when chainDelay expires during chain_resolving */
   private executeBomberChainStep(): void {
-    const fullRows = this.board.getFullRows();
-    if (fullRows.length > 0 && this.chainCount < 50) {
-      this.doChainStep(fullRows);
+    // After gravity, check if any bombs are now touching fire blocks
+    const ignitedBombs = BombResolver.findIgnitedBombs(this.board);
+
+    if (ignitedBombs.length > 0 && this.chainCount < 50) {
+      this.doChainStep(ignitedBombs);
     } else {
       this.finalizeBomberChain();
     }
   }
 
-  /** Finalize chain: apply score and return to playing */
+  /** Finalize chain: apply bomb score and return to playing */
   private finalizeBomberChain(): void {
-    if (this.totalChainLines > 0 || this.totalChainCells > 0) {
-      let score = 0;
-      if (this.totalChainLines > 0) {
-        score += ScoreCalculator.getLineClearScore(this.totalChainLines, this.level);
-      }
-      if (this.totalChainCells > 0) {
-        score += ScoreCalculator.getBombScore(this.totalChainCells, this.chainCount, this.level);
-      }
+    if (this.totalChainCells > 0) {
+      const score = ScoreCalculator.getBombScore(this.totalChainCells, this.chainCount, this.level);
       this.addScore(score);
 
-      if (this.totalChainLines > 0) {
-        this.totalLinesCleared += this.totalChainLines;
+      // Count destroyed cells as "lines" for level progression
+      const equivalentLines = Math.floor(this.totalChainCells / BOARD_WIDTH);
+      if (equivalentLines > 0) {
+        this.totalLinesCleared += equivalentLines;
         this.callbacks.onLinesChange?.(this.totalLinesCleared);
         this.updateLevel();
       }
     }
 
     this.afterChainComplete();
+  }
+
+  private refreshMegaBombs(): void {
+    const claimed = new Set<string>();
+
+    for (let y = 0; y < BOARD_HEIGHT; y++) {
+      for (let x = 0; x < BOARD_WIDTH; x++) {
+        const cell = this.board.getCell(x, y);
+        if (cell.type !== 'bomb' || (cell.megaBomb !== true && typeof cell.megaBombAnchorX !== 'number' && typeof cell.megaBombAnchorY !== 'number')) {
+          continue;
+        }
+
+        this.board.setCell(x, y, {
+          ...cell,
+          megaBomb: undefined,
+          megaBombAnchorX: undefined,
+          megaBombAnchorY: undefined,
+        });
+      }
+    }
+
+    for (let y = 0; y < BOARD_HEIGHT - 1; y++) {
+      for (let x = 0; x < BOARD_WIDTH - 1; x++) {
+        const cluster = [
+          { x, y },
+          { x: x + 1, y },
+          { x, y: y + 1 },
+          { x: x + 1, y: y + 1 },
+        ];
+
+        if (cluster.some((entry) => claimed.has(`${entry.x},${entry.y}`))) {
+          continue;
+        }
+
+        const cells = cluster.map((entry) => this.board.getCell(entry.x, entry.y));
+        if (cells.some((cell) => cell.type !== 'bomb')) {
+          continue;
+        }
+
+        const bombKind = cells[0].bombKind ?? 'normal';
+        if (cells.some((cell) => (cell.bombKind ?? 'normal') !== bombKind)) {
+          continue;
+        }
+
+        for (const entry of cluster) {
+          claimed.add(`${entry.x},${entry.y}`);
+          const cell = this.board.getCell(entry.x, entry.y);
+          this.board.setCell(entry.x, entry.y, {
+            ...cell,
+            megaBomb: true,
+            megaBombAnchorX: x,
+            megaBombAnchorY: y,
+          });
+        }
+      }
+    }
   }
 
   /** After chain (or no chain): check game over, spawn piece */
@@ -502,33 +821,6 @@ export class GameEngine {
     }
     this.state = 'playing';
     this.spawnPiece();
-  }
-
-  /**
-   * Gravity mode: apply column gravity → check lines → destroy cells → repeat.
-   * Unlike classic mode, full rows have their cells destroyed (not spliced),
-   * so blocks above fall down individually, potentially creating chains.
-   */
-  /** Scan the board for 2x2 bomb clusters and promote them to megaBomb */
-  private promoteBombClusters(): void {
-    for (let y = 0; y < BOARD_HEIGHT - 1; y++) {
-      for (let x = 0; x < BOARD_WIDTH - 1; x++) {
-        const c00 = this.board.getCell(x, y);
-        const c10 = this.board.getCell(x + 1, y);
-        const c01 = this.board.getCell(x, y + 1);
-        const c11 = this.board.getCell(x + 1, y + 1);
-        if (
-          c00.type === 'bomb' && c10.type === 'bomb' &&
-          c01.type === 'bomb' && c11.type === 'bomb'
-        ) {
-          // Promote all 4 to mega bomb
-          if (!c00.megaBomb) this.board.setCell(x, y, { ...c00, megaBomb: true });
-          if (!c10.megaBomb) this.board.setCell(x + 1, y, { ...c10, megaBomb: true });
-          if (!c01.megaBomb) this.board.setCell(x, y + 1, { ...c01, megaBomb: true });
-          if (!c11.megaBomb) this.board.setCell(x + 1, y + 1, { ...c11, megaBomb: true });
-        }
-      }
-    }
   }
 
   private updateLevel(): void {
@@ -548,7 +840,7 @@ export class GameEngine {
       // Swap with held piece
       const heldDef = this.holdPiece;
       this.holdPiece = currentDef;
-      this.currentPiece = this.pieceFactory['createPiece'](heldDef);
+      this.activateSpawnedPiece(this.pieceFactory.createPieceFromDefinition(heldDef));
     } else {
       this.holdPiece = currentDef;
       this.spawnPiece();
@@ -558,12 +850,21 @@ export class GameEngine {
   }
 
   private spawnPiece(): void {
-    this.currentPiece = this.pieceFactory.next();
+    const override = this.mode.getSpawnOverride?.(this.board, this.purifyStage, this.level) ?? null;
+    const nextPiece = override
+      ? this.pieceFactory.createPieceFromDefinition(override)
+      : this.pieceFactory.next();
     this.updateNextPieces();
-    this.dropTimer = 0;
+    this.activateSpawnedPiece(nextPiece);
+  }
 
-    // Check if spawn position is blocked
-    if (!CollisionDetector.canPlace(this.board, this.currentPiece)) {
+  private activateSpawnedPiece(piece: Piece): void {
+    this.currentPiece = piece;
+    this.dropTimer = 0;
+    this.lockTimer = 0;
+    this.isLocking = false;
+
+    if (!CollisionDetector.canPlace(this.board, piece)) {
       this.stop();
     }
   }
@@ -620,5 +921,13 @@ export class GameEngine {
   // Current drop speed (lower = faster)
   getSpeed(): number {
     return Math.round(INITIAL_DROP_INTERVAL * Math.pow(LEVEL_SPEED_FACTOR, this.level));
+  }
+
+  getRemainingCoreCount(): number {
+    return this.mode.type === 'purify' ? this.board.getCoreCount() : 0;
+  }
+
+  getArmoryWeaponCount(): number {
+    return this.mode.type === 'armory' ? this.totalLinesCleared : 0;
   }
 }

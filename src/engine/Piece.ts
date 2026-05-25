@@ -1,91 +1,135 @@
-import { PieceDefinition, Position } from './types';
+import { ArmoryFragmentTag, BombKind, PieceDefinition, Position } from './types';
 
-// Standard 7 tetrominoes + comet (6-block straight)
-// Each piece has 4 rotation states represented as matrices
-// 1 = filled, 0 = empty
+// Meteor fragments use original polyomino silhouettes instead of the standard
+// seven tetromino roster so the core mode has a more distinct identity.
 
-const PIECE_I: PieceDefinition = {
-  name: 'I',
+function cloneMatrix(matrix: number[][]): number[][] {
+  return matrix.map((row) => [...row]);
+}
+
+function rotateSquareMatrix(matrix: number[][]): number[][] {
+  const size = matrix.length;
+  return Array.from({ length: size }, (_, row) =>
+    Array.from({ length: size }, (_, col) => matrix[size - 1 - col]?.[row] ?? 0)
+  );
+}
+
+function createRotations(baseMatrix: number[][]): number[][][] {
+  const rotations = [cloneMatrix(baseMatrix)];
+  while (rotations.length < 4) {
+    rotations.push(rotateSquareMatrix(rotations[rotations.length - 1]));
+  }
+  return rotations;
+}
+
+const PIECE_SPARK: PieceDefinition = {
+  name: 'Spark',
   color: 0,
   isComet: false,
-  matrices: [
-    [[0,0,0,0],[1,1,1,1],[0,0,0,0],[0,0,0,0]],
-    [[0,0,1,0],[0,0,1,0],[0,0,1,0],[0,0,1,0]],
-    [[0,0,0,0],[0,0,0,0],[1,1,1,1],[0,0,0,0]],
-    [[0,1,0,0],[0,1,0,0],[0,1,0,0],[0,1,0,0]],
-  ],
+  matrices: createRotations([
+    [0, 0, 0, 0],
+    [0, 1, 1, 1],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+  ]),
 };
 
-const PIECE_O: PieceDefinition = {
-  name: 'O',
+const PIECE_BEND: PieceDefinition = {
+  name: 'Bend',
   color: 1,
   isComet: false,
-  matrices: [
-    [[1,1],[1,1]],
-    [[1,1],[1,1]],
-    [[1,1],[1,1]],
-    [[1,1],[1,1]],
-  ],
+  matrices: createRotations([
+    [0, 1, 0, 0],
+    [0, 1, 1, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+  ]),
 };
 
-const PIECE_T: PieceDefinition = {
-  name: 'T',
+const PIECE_SLAB: PieceDefinition = {
+  name: 'Slab',
   color: 2,
   isComet: false,
-  matrices: [
-    [[0,1,0],[1,1,1],[0,0,0]],
-    [[0,1,0],[0,1,1],[0,1,0]],
-    [[0,0,0],[1,1,1],[0,1,0]],
-    [[0,1,0],[1,1,0],[0,1,0]],
-  ],
+  matrices: createRotations([
+    [0, 1, 1, 0],
+    [0, 1, 1, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+  ]),
 };
 
-const PIECE_S: PieceDefinition = {
-  name: 'S',
+const PIECE_ARC: PieceDefinition = {
+  name: 'Arc',
   color: 3,
   isComet: false,
-  matrices: [
-    [[0,1,1],[1,1,0],[0,0,0]],
-    [[0,1,0],[0,1,1],[0,0,1]],
-    [[0,0,0],[0,1,1],[1,1,0]],
-    [[1,0,0],[1,1,0],[0,1,0]],
-  ],
+  matrices: createRotations([
+    [1, 0, 1, 0],
+    [1, 1, 1, 0],
+    [0, 0, 0, 0],
+    [0, 0, 0, 0],
+  ]),
 };
 
-const PIECE_Z: PieceDefinition = {
-  name: 'Z',
+const PIECE_VANE: PieceDefinition = {
+  name: 'Vane',
   color: 4,
   isComet: false,
-  matrices: [
-    [[1,1,0],[0,1,1],[0,0,0]],
-    [[0,0,1],[0,1,1],[0,1,0]],
-    [[0,0,0],[1,1,0],[0,1,1]],
-    [[0,1,0],[1,1,0],[1,0,0]],
-  ],
+  matrices: createRotations([
+    [1, 0, 0, 0],
+    [1, 0, 0, 0],
+    [1, 1, 1, 0],
+    [0, 0, 0, 0],
+  ]),
 };
 
-const PIECE_J: PieceDefinition = {
-  name: 'J',
+const PIECE_WAVE: PieceDefinition = {
+  name: 'Wave',
   color: 5,
   isComet: false,
-  matrices: [
-    [[1,0,0],[1,1,1],[0,0,0]],
-    [[0,1,1],[0,1,0],[0,1,0]],
-    [[0,0,0],[1,1,1],[0,0,1]],
-    [[0,1,0],[0,1,0],[1,1,0]],
-  ],
+  matrices: createRotations([
+    [1, 0, 0, 0],
+    [1, 1, 0, 0],
+    [0, 1, 1, 0],
+    [0, 0, 0, 0],
+  ]),
 };
 
-const PIECE_L: PieceDefinition = {
-  name: 'L',
+const PIECE_NOVA: PieceDefinition = {
+  name: 'Nova',
   color: 6,
   isComet: false,
-  matrices: [
-    [[0,0,1],[1,1,1],[0,0,0]],
-    [[0,1,0],[0,1,0],[0,1,1]],
-    [[0,0,0],[1,1,1],[1,0,0]],
-    [[1,1,0],[0,1,0],[0,1,0]],
+  matrices: createRotations([
+    [0, 1, 0],
+    [1, 1, 1],
+    [0, 1, 0],
+  ]),
+};
+
+const SUPPORT_WEIGHT_MATRICES = [
+  [
+    [1, 1, 1],
+    [1, 1, 1],
   ],
+  [
+    [1, 1, 1],
+    [1, 1, 1],
+  ],
+  [
+    [1, 1, 1],
+    [1, 1, 1],
+  ],
+  [
+    [1, 1, 1],
+    [1, 1, 1],
+  ],
+] as number[][][];
+
+export const SUPPORT_WEIGHT_PIECE: PieceDefinition = {
+  name: 'Anchor',
+  color: 10,
+  isComet: false,
+  special: 'supportWeight',
+  matrices: SUPPORT_WEIGHT_MATRICES.map((matrix) => matrix.map((row) => [...row])),
 };
 
 // Comet: 6-block straight piece, only 2 rotation states
@@ -101,8 +145,37 @@ const PIECE_COMET: PieceDefinition = {
   ],
 };
 
-export const STANDARD_PIECES = [PIECE_I, PIECE_O, PIECE_T, PIECE_S, PIECE_Z, PIECE_J, PIECE_L];
+export const STANDARD_PIECES = [
+  PIECE_SPARK,
+  PIECE_BEND,
+  PIECE_SLAB,
+  PIECE_ARC,
+  PIECE_VANE,
+  PIECE_WAVE,
+  PIECE_NOVA,
+];
 export const ALL_PIECES = [...STANDARD_PIECES, PIECE_COMET];
+
+export function getPieceDefinitionCellColor(
+  definition: PieceDefinition,
+  rotation: number,
+  col: number,
+  row: number,
+): number {
+  const rotationColors = definition.cellColors?.[rotation] ?? definition.cellColors?.[0];
+  const color = rotationColors?.[row]?.[col];
+  return typeof color === 'number' && color >= 0 ? color : definition.color;
+}
+
+export function getPieceDefinitionArmoryFragment(
+  definition: PieceDefinition,
+  rotation: number,
+  col: number,
+  row: number,
+): ArmoryFragmentTag | null {
+  const rotationFragments = definition.cellFragments?.[rotation] ?? definition.cellFragments?.[0];
+  return rotationFragments?.[row]?.[col] ?? null;
+}
 
 export class Piece {
   definition: PieceDefinition;
@@ -111,7 +184,9 @@ export class Piece {
   rotation: number;
   /** Bomb cells stored as "col,row" keys in matrix-local coordinates */
   bombCells: Set<string> = new Set();
-  /** Whether this piece is a mega bomb (all cells are bombs, larger blast) */
+  bombKinds: Map<string, BombKind> = new Map();
+  fireCells: Set<string> = new Set();
+  /** Legacy oversized-bomb flag kept for compatibility with older saves/tests */
   isMegaBomb: boolean = false;
 
   constructor(definition: PieceDefinition, x: number, y: number) {
@@ -128,6 +203,22 @@ export class Piece {
   /** Check if a matrix-local cell (col, row) is a bomb */
   isBombAt(col: number, row: number): boolean {
     return this.bombCells.has(`${col},${row}`);
+  }
+
+  getBombKindAt(col: number, row: number): BombKind | null {
+    return this.bombKinds.get(`${col},${row}`) ?? null;
+  }
+
+  isFireAt(col: number, row: number): boolean {
+    return this.fireCells.has(`${col},${row}`);
+  }
+
+  getColorAt(col: number, row: number): number {
+    return getPieceDefinitionCellColor(this.definition, this.rotation, col, row);
+  }
+
+  getArmoryFragmentAt(col: number, row: number): ArmoryFragmentTag | null {
+    return getPieceDefinitionArmoryFragment(this.definition, this.rotation, col, row);
   }
 
   getOccupiedCells(): Position[] {
@@ -147,6 +238,8 @@ export class Piece {
     const p = new Piece(this.definition, this.x, this.y);
     p.rotation = this.rotation;
     p.bombCells = new Set(this.bombCells);
+    p.bombKinds = new Map(this.bombKinds);
+    p.fireCells = new Set(this.fireCells);
     p.isMegaBomb = this.isMegaBomb;
     return p;
   }
@@ -156,25 +249,31 @@ export class Piece {
     const oldRotation = p.rotation;
     p.rotation = (p.rotation + direction + 4) % 4;
 
-    // Transform bomb cell coordinates for the new rotation
-    if (p.bombCells.size > 0) {
-      const size = this.definition.matrices[oldRotation].length;
-      const newBombs = new Set<string>();
-      for (const key of p.bombCells) {
-        const [col, row] = key.split(',').map(Number);
-        let nc: number, nr: number;
-        if (direction === 1) {
-          // CW: (col, row) → (size-1-row, col)
-          nc = size - 1 - row;
-          nr = col;
-        } else {
-          // CCW: (col, row) → (row, size-1-col)
-          nc = row;
-          nr = size - 1 - col;
-        }
-        newBombs.add(`${nc},${nr}`);
+    const size = this.definition.matrices[oldRotation].length;
+    const rotateKey = (key: string): string => {
+      const [col, row] = key.split(',').map(Number);
+      let nc: number;
+      let nr: number;
+      if (direction === 1) {
+        nc = size - 1 - row;
+        nr = col;
+      } else {
+        nc = row;
+        nr = size - 1 - col;
       }
-      p.bombCells = newBombs;
+      return `${nc},${nr}`;
+    };
+
+    if (p.bombCells.size > 0) {
+      p.bombCells = new Set(Array.from(p.bombCells, rotateKey));
+    }
+
+    if (p.bombKinds.size > 0) {
+      p.bombKinds = new Map(Array.from(p.bombKinds.entries(), ([key, kind]) => [rotateKey(key), kind]));
+    }
+
+    if (p.fireCells.size > 0) {
+      p.fireCells = new Set(Array.from(p.fireCells, rotateKey));
     }
 
     return p;

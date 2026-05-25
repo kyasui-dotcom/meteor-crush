@@ -1,0 +1,18 @@
+
+> meteor-crush@0.1.0 dev
+> next dev --hostname 127.0.0.1 --port 3100
+
+▲ Next.js 16.1.6 (Turbopack)
+- Local:         http://127.0.0.1:3100
+- Network:       http://127.0.0.1:3100
+
+✓ Starting...
+✓ Ready in 932ms
+ GET /game/ 200 in 394ms (compile: 247ms, render: 146ms)
+ GET /game/ 200 in 48ms (compile: 4ms, render: 44ms)
+ GET /game/ 200 in 124ms (compile: 3ms, render: 120ms)
+ GET / 200 in 128ms (compile: 54ms, render: 74ms)
+ GET /game/ 200 in 39ms (compile: 3ms, render: 36ms)
+ GET / 200 in 75ms (compile: 3ms, render: 72ms)
+ GET /game/ 200 in 76ms (compile: 29ms, render: 46ms)
+[?25h

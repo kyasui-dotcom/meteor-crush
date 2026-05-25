@@ -1,0 +1,283 @@
+
+> meteor-crush@0.1.0 build
+> next build
+
+▲ Next.js 16.1.6 (Turbopack)
+
+  Creating an optimized production build ...
+✓ Compiled successfully in 1835.8ms
+  Running TypeScript ...
+  Collecting page data using 19 workers ...
+  Generating static pages using 19 workers (0/8) ...
+  Generating static pages using 19 workers (2/8) 
+  Generating static pages using 19 workers (4/8) 
+  Generating static pages using 19 workers (6/8) 
+✓ Generating static pages using 19 workers (8/8) in 544.6ms
+  Finalizing page optimization ...
+
+Route (app)
+┌ ○ /
+├ ○ /_not-found
+├ ○ /game
+├ ○ /privacy
+├ ○ /robots.txt
+└ ○ /sitemap.xml
+
+
+○  (Static)  prerendered as static content
+
+√ Copying web assets from out to android\app\src\main\assets\public in 48.88ms
+√ Creating capacitor.config.json in android\app\src\main\assets in 875.20μs
+√ copy android in 65.68ms
+√ Updating Android plugins in 1.98ms
+[info] Found 1 Capacitor plugin for android:
+       @capacitor-community/admob@8.0.0
+√ update android in 210.32ms
+[info] Sync finished in 0.295s
+
+> Configure project :app
+WARNING: The option setting 'android.overridePathCheck=true' is experimental.
+The current default is 'false'.
+WARNING: Using flatDir should be avoided because it doesn't support any meta-data formats.
+
+> Configure project :capacitor-cordova-android-plugins
+WARNING: Using flatDir should be avoided because it doesn't support any meta-data formats.
+
+> Task :app:preBuild UP-TO-DATE
+> Task :app:preReleaseBuild UP-TO-DATE
+> Task :app:mergeReleaseJniLibFolders
+> Task :capacitor-android:preBuild UP-TO-DATE
+> Task :capacitor-android:preReleaseBuild UP-TO-DATE
+> Task :capacitor-android:mergeReleaseJniLibFolders
+> Task :capacitor-android:mergeReleaseNativeLibs NO-SOURCE
+> Task :capacitor-community-admob:preBuild UP-TO-DATE
+> Task :capacitor-community-admob:preReleaseBuild UP-TO-DATE
+> Task :capacitor-android:copyReleaseJniLibsProjectOnly
+> Task :capacitor-community-admob:mergeReleaseJniLibFolders
+> Task :capacitor-community-admob:mergeReleaseNativeLibs NO-SOURCE
+> Task :capacitor-cordova-android-plugins:preBuild UP-TO-DATE
+> Task :capacitor-cordova-android-plugins:preReleaseBuild UP-TO-DATE
+> Task :capacitor-community-admob:copyReleaseJniLibsProjectOnly
+> Task :capacitor-cordova-android-plugins:mergeReleaseJniLibFolders
+> Task :capacitor-cordova-android-plugins:mergeReleaseNativeLibs NO-SOURCE
+> Task :capacitor-cordova-android-plugins:copyReleaseJniLibsProjectOnly
+> Task :capacitor-android:generateReleaseResValues
+> Task :app:mergeReleaseNativeLibs NO-SOURCE
+> Task :app:stripReleaseDebugSymbols NO-SOURCE
+> Task :app:extractReleaseNativeSymbolTables NO-SOURCE
+> Task :app:mergeReleaseNativeDebugMetadata NO-SOURCE
+> Task :capacitor-android:generateReleaseResources
+> Task :capacitor-android:packageReleaseResources
+> Task :capacitor-android:processReleaseNavigationResources
+> Task :capacitor-community-admob:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :capacitor-android:javaPreCompileRelease
+> Task :capacitor-community-admob:generateReleaseResValues
+> Task :capacitor-android:parseReleaseLocalResources
+> Task :capacitor-community-admob:generateReleaseResources
+> Task :capacitor-android:generateReleaseRFile
+> Task :capacitor-community-admob:packageReleaseResources
+
+> Task :capacitor-android:compileReleaseJavaWithJavac
+
+> Task :capacitor-community-admob:processReleaseNavigationResources
+> Task :capacitor-android:bundleLibCompileToJarRelease
+> Task :capacitor-community-admob:parseReleaseLocalResources
+> Task :capacitor-community-admob:javaPreCompileRelease
+> Task :capacitor-cordova-android-plugins:generateReleaseResValues
+> Task :capacitor-community-admob:generateReleaseRFile
+> Task :capacitor-cordova-android-plugins:generateReleaseResources
+> Task :capacitor-android:bundleLibRuntimeToDirRelease
+> Task :capacitor-cordova-android-plugins:packageReleaseResources
+> Task :capacitor-cordova-android-plugins:processReleaseNavigationResources
+> Task :capacitor-cordova-android-plugins:parseReleaseLocalResources
+> Task :capacitor-cordova-android-plugins:javaPreCompileRelease
+> Task :app:javaPreCompileRelease
+> Task :capacitor-cordova-android-plugins:generateReleaseRFile
+> Task :capacitor-android:writeReleaseAarMetadata
+> Task :capacitor-cordova-android-plugins:compileReleaseJavaWithJavac NO-SOURCE
+> Task :capacitor-cordova-android-plugins:bundleLibRuntimeToDirRelease
+> Task :capacitor-community-admob:writeReleaseAarMetadata
+> Task :app:checkReleaseDuplicateClasses
+> Task :capacitor-cordova-android-plugins:writeReleaseAarMetadata
+> Task :app:processReleaseNavigationResources
+> Task :app:checkReleaseAarMetadata
+> Task :app:compileReleaseNavigationResources
+> Task :app:generateReleaseResValues
+> Task :app:mapReleaseSourceSetPaths
+> Task :app:generateReleaseResources
+> Task :app:packageReleaseResources
+> Task :app:createReleaseCompatibleScreenManifests
+> Task :app:extractDeepLinksRelease
+> Task :app:parseReleaseLocalResources
+> Task :capacitor-android:extractDeepLinksRelease
+> Task :capacitor-community-admob:extractDeepLinksRelease
+> Task :capacitor-android:processReleaseManifest
+> Task :capacitor-cordova-android-plugins:extractDeepLinksRelease
+> Task :capacitor-community-admob:processReleaseManifest
+> Task :capacitor-cordova-android-plugins:processReleaseManifest
+> Task :capacitor-android:compileReleaseLibraryResources
+> Task :capacitor-community-admob:compileReleaseLibraryResources
+> Task :app:mergeReleaseResources
+> Task :app:processReleaseMainManifest
+> Task :app:processReleaseManifest
+> Task :capacitor-cordova-android-plugins:compileReleaseLibraryResources
+> Task :capacitor-cordova-android-plugins:bundleLibCompileToJarRelease
+> Task :app:desugarReleaseFileDependencies
+> Task :app:mergeReleaseStartupProfile UP-TO-DATE
+> Task :capacitor-android:prepareReleaseArtProfile UP-TO-DATE
+> Task :capacitor-community-admob:prepareReleaseArtProfile UP-TO-DATE
+> Task :capacitor-cordova-android-plugins:prepareReleaseArtProfile UP-TO-DATE
+> Task :app:processReleaseManifestForPackage
+> Task :app:mergeReleaseArtProfile
+> Task :capacitor-cordova-android-plugins:bundleLibRuntimeToJarRelease
+> Task :app:mergeReleaseShaders
+> Task :app:compileReleaseShaders NO-SOURCE
+> Task :app:generateReleaseAssets UP-TO-DATE
+> Task :capacitor-android:bundleLibRuntimeToJarRelease
+> Task :capacitor-android:mergeReleaseShaders
+> Task :capacitor-android:compileReleaseShaders NO-SOURCE
+> Task :capacitor-android:generateReleaseAssets UP-TO-DATE
+> Task :capacitor-android:mergeReleaseAssets
+> Task :capacitor-community-admob:mergeReleaseShaders
+> Task :capacitor-community-admob:compileReleaseShaders NO-SOURCE
+> Task :capacitor-community-admob:generateReleaseAssets UP-TO-DATE
+> Task :capacitor-community-admob:mergeReleaseAssets
+> Task :capacitor-cordova-android-plugins:mergeReleaseShaders
+> Task :capacitor-cordova-android-plugins:compileReleaseShaders NO-SOURCE
+> Task :capacitor-cordova-android-plugins:generateReleaseAssets UP-TO-DATE
+> Task :capacitor-cordova-android-plugins:mergeReleaseAssets
+> Task :app:mergeReleaseAssets
+> Task :app:extractReleaseVersionControlInfo
+> Task :app:extractProguardFiles
+> Task :capacitor-android:processReleaseJavaRes NO-SOURCE
+> Task :capacitor-android:createFullJarRelease
+> Task :capacitor-android:extractProguardFiles
+
+> Task :capacitor-community-admob:compileReleaseKotlin
+w: file:///C:/Users/PC/Documents/programs/meteor-crush/node_modules/@capacitor-community/admob/android/src/main/java/com/getcapacitor/community/admob/banner/BannerAdSizeEnum.kt:15:25 'static field SMART_BANNER: AdSize' is deprecated. Deprecated in Java.
+
+> Task :app:compressReleaseAssets
+> Task :capacitor-android:generateReleaseLintModel
+
+> Task :capacitor-community-admob:compileReleaseJavaWithJavac
+
+> Task :capacitor-android:prepareLintJarForPublish UP-TO-DATE
+> Task :capacitor-community-admob:bundleLibCompileToJarRelease
+> Task :capacitor-community-admob:bundleLibRuntimeToJarRelease
+> Task :capacitor-community-admob:processReleaseJavaRes
+> Task :capacitor-community-admob:createFullJarRelease
+> Task :capacitor-community-admob:extractProguardFiles
+> Task :capacitor-community-admob:generateReleaseLintModel
+> Task :capacitor-community-admob:prepareLintJarForPublish UP-TO-DATE
+> Task :capacitor-cordova-android-plugins:processReleaseJavaRes NO-SOURCE
+> Task :app:processReleaseResources
+> Task :capacitor-cordova-android-plugins:createFullJarRelease
+> Task :capacitor-community-admob:bundleLibRuntimeToDirRelease
+> Task :app:compileReleaseJavaWithJavac
+> Task :app:dexBuilderRelease
+> Task :capacitor-cordova-android-plugins:extractProguardFiles
+> Task :app:mergeReleaseGlobalSynthetics
+> Task :capacitor-cordova-android-plugins:generateReleaseLintModel
+> Task :capacitor-cordova-android-plugins:prepareLintJarForPublish UP-TO-DATE
+> Task :app:generateReleaseLintVitalReportModel
+> Task :capacitor-community-admob:stripReleaseDebugSymbols NO-SOURCE
+> Task :capacitor-community-admob:checkReleaseAarMetadata
+> Task :capacitor-community-admob:copyReleaseJniLibsProjectAndLocalJars
+> Task :capacitor-community-admob:extractDeepLinksForAarRelease UP-TO-DATE
+> Task :capacitor-community-admob:extractReleaseAnnotations
+> Task :capacitor-community-admob:mergeReleaseGeneratedProguardFiles UP-TO-DATE
+> Task :capacitor-community-admob:mergeReleaseConsumerProguardFiles UP-TO-DATE
+> Task :capacitor-android:stripReleaseDebugSymbols NO-SOURCE
+> Task :capacitor-android:checkReleaseAarMetadata
+> Task :capacitor-android:copyReleaseJniLibsProjectAndLocalJars
+> Task :capacitor-android:extractDeepLinksForAarRelease UP-TO-DATE
+> Task :capacitor-community-admob:mergeReleaseJavaResource
+> Task :capacitor-android:extractReleaseAnnotations
+> Task :capacitor-community-admob:syncReleaseLibJars
+> Task :capacitor-community-admob:bundleReleaseLocalLintAar
+> Task :capacitor-android:mergeReleaseGeneratedProguardFiles UP-TO-DATE
+> Task :capacitor-android:mergeReleaseConsumerProguardFiles
+> Task :capacitor-android:mergeReleaseJavaResource
+> Task :capacitor-cordova-android-plugins:stripReleaseDebugSymbols NO-SOURCE
+> Task :capacitor-cordova-android-plugins:checkReleaseAarMetadata
+> Task :capacitor-android:syncReleaseLibJars
+> Task :capacitor-android:bundleReleaseLocalLintAar
+> Task :capacitor-cordova-android-plugins:copyReleaseJniLibsProjectAndLocalJars
+> Task :capacitor-cordova-android-plugins:extractDeepLinksForAarRelease UP-TO-DATE
+> Task :capacitor-cordova-android-plugins:extractReleaseAnnotations
+> Task :capacitor-cordova-android-plugins:mergeReleaseGeneratedProguardFiles UP-TO-DATE
+> Task :capacitor-cordova-android-plugins:mergeReleaseConsumerProguardFiles UP-TO-DATE
+> Task :capacitor-cordova-android-plugins:mergeReleaseJavaResource
+> Task :capacitor-cordova-android-plugins:syncReleaseLibJars
+> Task :capacitor-cordova-android-plugins:bundleReleaseLocalLintAar
+> Task :capacitor-android:writeReleaseLintModelMetadata
+> Task :capacitor-community-admob:writeReleaseLintModelMetadata
+> Task :capacitor-cordova-android-plugins:writeReleaseLintModelMetadata
+> Task :capacitor-android:generateReleaseLintVitalModel
+> Task :capacitor-community-admob:generateReleaseLintVitalModel
+> Task :capacitor-cordova-android-plugins:generateReleaseLintVitalModel
+> Task :app:processReleaseJavaRes NO-SOURCE
+> Task :app:collectReleaseDependencies
+> Task :app:sdkReleaseDependencyData
+> Task :app:validateSigningRelease
+> Task :app:writeReleaseAppMetadata
+> Task :app:writeReleaseSigningConfigVersions
+> Task :capacitor-android:bundleReleaseAar
+> Task :capacitor-android:mapReleaseSourceSetPaths
+> Task :app:mergeExtDexRelease
+> Task :app:mergeReleaseJavaResource
+> Task :capacitor-android:mergeReleaseResources
+> Task :app:optimizeReleaseResources
+> Task :capacitor-community-admob:bundleReleaseAar
+> Task :capacitor-community-admob:mapReleaseSourceSetPaths
+> Task :capacitor-android:verifyReleaseResources
+> Task :capacitor-community-admob:lintVitalAnalyzeRelease
+> Task :capacitor-android:lintVitalAnalyzeRelease
+> Task :capacitor-community-admob:mergeReleaseResources
+> Task :capacitor-android:assembleRelease
+> Task :capacitor-cordova-android-plugins:bundleReleaseAar
+> Task :capacitor-cordova-android-plugins:mapReleaseSourceSetPaths
+> Task :app:mergeDexRelease
+> Task :capacitor-cordova-android-plugins:lintVitalAnalyzeRelease
+> Task :capacitor-community-admob:verifyReleaseResources
+> Task :capacitor-cordova-android-plugins:mergeReleaseResources
+> Task :capacitor-community-admob:assembleRelease
+> Task :app:processApplicationManifestReleaseForBundle
+> Task :app:configureReleaseDependencies
+> Task :app:parseReleaseIntegrityConfig UP-TO-DATE
+> Task :app:compileReleaseArtProfile
+> Task :app:bundleReleaseResources
+> Task :app:buildReleasePreBundle
+> Task :capacitor-cordova-android-plugins:verifyReleaseResources
+> Task :capacitor-cordova-android-plugins:assembleRelease
+> Task :app:lintVitalAnalyzeRelease
+> Task :app:lintVitalReportRelease
+> Task :app:lintVitalRelease
+> Task :app:packageReleaseBundle
+> Task :app:packageRelease
+> Task :app:createReleaseApkListingFileRedirect
+> Task :app:assembleRelease
+> Task :app:signReleaseBundle
+> Task :app:produceReleaseBundleIdeListingFile
+> Task :app:createReleaseBundleListingFileRedirect
+> Task :app:bundleRelease
+
+[Incubating] Problems report is available at: file:///C:/Users/PC/Documents/programs/meteor-crush/android/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 9.0.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/8.14.3/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 23s
+175 actionable tasks: 159 executed, 16 up-to-date
+
+AdMode           : internal
+AdMobAppId       : ca-app-pub-3940256099942544~3347511713
+InterstitialAdId : ca-app-pub-3940256099942544/1033173712
+VersionName      : 1.0
+VersionCode      : 28
+ApkPath          : C:\Users\PC\Downloads\meteor-crush-v1.0-testapp-vc28.apk
+AabPath          : C:\Users\PC\Downloads\meteor-crush-v1.0-testapp-vc28.aab
+

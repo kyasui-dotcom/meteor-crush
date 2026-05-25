@@ -1,0 +1,16 @@
+{
+  "debugResult": {
+    "mode": "armory",
+    "boardSeeded": true,
+    "weapon": "pan",
+    "junkMixed": true
+  },
+  "resolved": {
+    "mode": "armory",
+    "chainText": "PAN SWEEP",
+    "weapons": 1,
+    "score": 662
+  },
+  "state": null,
+  "errors": []
+}
