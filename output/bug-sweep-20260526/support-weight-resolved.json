@@ -1,0 +1,112 @@
+{
+  "coordinateSystem": "board origin is top-left; x increases right; y increases downward; all 22 rows are rendered; rows 0-1 are the spawn warning zone",
+  "mode": "purify",
+  "state": "playing",
+  "score": 0,
+  "level": 0,
+  "lines": 0,
+  "speed": 1000,
+  "chainText": "ANCHOR DROP",
+  "chainTimer": 1266.6666666666642,
+  "chainEffectTier": 1,
+  "ghostY": 11,
+  "filledCellCount": 10,
+  "filledCells": [
+    {
+      "x": 4,
+      "y": 13,
+      "visibleY": 13,
+      "type": "block",
+      "color": 10
+    },
+    {
+      "x": 5,
+      "y": 13,
+      "visibleY": 13,
+      "type": "block",
+      "color": 10
+    },
+    {
+      "x": 6,
+      "y": 13,
+      "visibleY": 13,
+      "type": "block",
+      "color": 10
+    },
+    {
+      "x": 4,
+      "y": 14,
+      "visibleY": 14,
+      "type": "block",
+      "color": 10
+    },
+    {
+      "x": 5,
+      "y": 14,
+      "visibleY": 14,
+      "type": "block",
+      "color": 10
+    },
+    {
+      "x": 6,
+      "y": 14,
+      "visibleY": 14,
+      "type": "block",
+      "color": 10
+    },
+    {
+      "x": 4,
+      "y": 20,
+      "visibleY": 20,
+      "type": "block",
+      "color": 4
+    },
+    {
+      "x": 4,
+      "y": 21,
+      "visibleY": 21,
+      "type": "block",
+      "color": 1
+    },
+    {
+      "x": 5,
+      "y": 21,
+      "visibleY": 21,
+      "type": "block",
+      "color": 2
+    },
+    {
+      "x": 6,
+      "y": 21,
+      "visibleY": 21,
+      "type": "block",
+      "color": 3
+    }
+  ],
+  "currentPiece": {
+    "name": "Bend",
+    "x": 4,
+    "y": 0,
+    "rotation": 0,
+    "occupiedCells": [
+      {
+        "x": 5,
+        "y": 0
+      },
+      {
+        "x": 5,
+        "y": 1
+      },
+      {
+        "x": 6,
+        "y": 1
+      }
+    ]
+  },
+  "holdPiece": null,
+  "nextPieces": [
+    "Wave",
+    "Vane",
+    "Nova"
+  ]
+}

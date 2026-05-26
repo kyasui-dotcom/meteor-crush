@@ -40,7 +40,7 @@ import RuleSheet from './RuleSheet';
 import LanguagePicker from '@/components/i18n/LanguagePicker';
 import { BOARD_HEIGHT, BOARD_WIDTH, HIDDEN_ROWS } from '@/lib/constants';
 
-type SelectedMode = 'classic' | 'bomber' | 'armory' | 'purify';
+export type SelectedMode = 'classic' | 'bomber' | 'armory' | 'purify';
 type ScreenState = 'title' | 'playing' | 'game_over' | 'ranking';
 type RankingTab = 'my' | 'regional' | 'world';
 type ActivePanel = 'rules' | 'settings' | null;
@@ -119,7 +119,7 @@ function createPieceSnapshot(piece: Piece | null): SnapshotPiece | null {
   };
 }
 
-function createGameSnapshot(engine: GameEngine, mode: SelectedMode): GameSnapshot {
+export function createGameSnapshot(engine: GameEngine): GameSnapshot {
   const filledCells: SnapshotCell[] = [];
 
   for (let y = 0; y < BOARD_HEIGHT; y++) {
@@ -147,7 +147,7 @@ function createGameSnapshot(engine: GameEngine, mode: SelectedMode): GameSnapsho
 
   return {
     coordinateSystem: `board origin is top-left; x increases right; y increases downward; all ${BOARD_HEIGHT} rows are rendered; rows 0-${HIDDEN_ROWS - 1} are the spawn warning zone`,
-    mode,
+    mode: engine.mode.type,
     state: engine.state,
     score: engine.score,
     level: engine.level,
@@ -278,7 +278,7 @@ export default function GameCanvas() {
         const engine = engineRef.current;
         if (!engine) return null;
 
-        return createGameSnapshot(engine, selectedModeRef.current);
+        return createGameSnapshot(engine);
       },
       loadSupportWeightScenario: () => {
         const engine = engineRef.current;
@@ -292,6 +292,7 @@ export default function GameCanvas() {
         engine.board.setCell(6, 15, { type: 'block', color: 3 });
         engine.currentPiece = new Piece(SUPPORT_WEIGHT_PIECE, 4, 13);
         engine.state = 'playing';
+        selectedModeRef.current = 'classic';
         setSelectedMode('classic');
         setScreenState('playing');
 
@@ -311,6 +312,7 @@ export default function GameCanvas() {
         engine.board.reset();
         engine.currentPiece = new Piece(novaPiece, 4, -1);
         engine.state = 'playing';
+        selectedModeRef.current = 'classic';
         setSelectedMode('classic');
         setScreenState('playing');
 
@@ -361,6 +363,7 @@ export default function GameCanvas() {
         (engine as unknown as { refreshMegaBombs: () => void }).refreshMegaBombs();
         engine.currentPiece = null;
         engine.state = 'playing';
+        selectedModeRef.current = 'bomber';
         setSelectedMode('bomber');
         setScreenState('playing');
 
@@ -406,6 +409,7 @@ export default function GameCanvas() {
         engine.board.setCell(3, 12, { type: 'block', color: 0 });
         engine.board.setCell(6, 13, { type: 'block', color: 1 });
         engine.state = 'playing';
+        selectedModeRef.current = 'armory';
         setSelectedMode('armory');
         setScreenState('playing');
 
@@ -435,6 +439,7 @@ export default function GameCanvas() {
         engine.board.setCell(8, 13, { type: 'block', color: 1 });
         engine.board.setCell(2, 12, { type: 'block', color: 2 });
         engine.state = 'playing';
+        selectedModeRef.current = 'armory';
         setSelectedMode('armory');
         setScreenState('playing');
 
@@ -464,6 +469,7 @@ export default function GameCanvas() {
         engine.board.setCell(1, 9, { type: 'block', color: 0 });
         engine.board.setCell(7, 14, { type: 'block', color: 1 });
         engine.state = 'playing';
+        selectedModeRef.current = 'armory';
         setSelectedMode('armory');
         setScreenState('playing');
 
@@ -507,6 +513,7 @@ export default function GameCanvas() {
         engine.board.setCell(0, 11, { type: 'block', color: 6 });
         engine.board.setCell(9, 15, { type: 'block', color: 1 });
         engine.state = 'playing';
+        selectedModeRef.current = 'armory';
         setSelectedMode('armory');
         setScreenState('playing');
 
@@ -546,6 +553,7 @@ export default function GameCanvas() {
           fragmentIndex: 0,
         });
         engine.state = 'playing';
+        selectedModeRef.current = 'armory';
         setSelectedMode('armory');
         setScreenState('playing');
 
@@ -570,6 +578,7 @@ export default function GameCanvas() {
         engine.board.setCell(4, 12, { type: 'block', color: 5 });
         engine.board.setCell(5, 9, { type: 'block', color: 2 });
         engine.state = 'playing';
+        selectedModeRef.current = 'purify';
         setSelectedMode('purify');
         setScreenState('playing');
 
@@ -1035,7 +1044,7 @@ export default function GameCanvas() {
     });
     engineRef.current = engine;
     const debugWindow = window as DebugWindow;
-    const getSnapshot = () => createGameSnapshot(engine, selectedModeRef.current);
+    const getSnapshot = () => createGameSnapshot(engine);
     debugWindow.__meteorCrushState = getSnapshot;
     debugWindow.render_game_to_text = () => JSON.stringify(getSnapshot());
 

@@ -1,0 +1,58 @@
+{
+  "coordinateSystem": "board origin is top-left; x increases right; y increases downward; all 22 rows are rendered; rows 0-1 are the spawn warning zone",
+  "mode": "purify",
+  "state": "playing",
+  "score": 700,
+  "level": 0,
+  "lines": 1,
+  "speed": 1000,
+  "chainText": "Crush",
+  "chainTimer": 1566.6666666666647,
+  "chainEffectTier": 0,
+  "ghostY": 19,
+  "filledCellCount": 1,
+  "filledCells": [
+    {
+      "x": 3,
+      "y": 21,
+      "visibleY": 21,
+      "type": "block",
+      "color": 15,
+      "fire": true
+    }
+  ],
+  "currentPiece": {
+    "name": "Vane",
+    "x": 4,
+    "y": 0,
+    "rotation": 0,
+    "occupiedCells": [
+      {
+        "x": 4,
+        "y": 0
+      },
+      {
+        "x": 4,
+        "y": 1
+      },
+      {
+        "x": 4,
+        "y": 2
+      },
+      {
+        "x": 5,
+        "y": 2
+      },
+      {
+        "x": 6,
+        "y": 2
+      }
+    ]
+  },
+  "holdPiece": null,
+  "nextPieces": [
+    "Arc",
+    "Bend",
+    "Nova"
+  ]
+}

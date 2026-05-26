@@ -1,0 +1,42 @@
+[
+  {
+    "scenario": "bomber-ignition",
+    "mode": "bomber",
+    "lines": 1,
+    "chainText": "Crush",
+    "score": 700,
+    "resolved": {
+      "mode": "bomber",
+      "state": "playing",
+      "chainText": "Crush",
+      "score": 700,
+      "lines": 1
+    }
+  },
+  {
+    "scenario": "armory-overlap",
+    "mode": "armory",
+    "lines": 1,
+    "chainText": "BOMB OVERDRIVE",
+    "score": 586,
+    "resolved": {
+      "mode": "armory",
+      "chainText": "BOMB OVERDRIVE",
+      "weapons": 1,
+      "score": 586
+    }
+  },
+  {
+    "scenario": "armory-overdrive",
+    "mode": "armory",
+    "lines": 3,
+    "chainText": "Triple Crush",
+    "score": 5208,
+    "resolved": {
+      "mode": "armory",
+      "chainText": "Triple Crush",
+      "weapons": 3,
+      "score": 5208
+    }
+  }
+]

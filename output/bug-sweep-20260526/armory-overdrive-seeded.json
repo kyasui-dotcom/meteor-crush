@@ -1,0 +1,128 @@
+{
+  "coordinateSystem": "board origin is top-left; x increases right; y increases downward; all 22 rows are rendered; rows 0-1 are the spawn warning zone",
+  "mode": "purify",
+  "state": "playing",
+  "score": 0,
+  "level": 0,
+  "lines": 0,
+  "speed": 1000,
+  "chainText": "",
+  "chainTimer": 0,
+  "chainEffectTier": -1,
+  "ghostY": 10,
+  "filledCellCount": 10,
+  "filledCells": [
+    {
+      "x": 0,
+      "y": 11,
+      "visibleY": 11,
+      "type": "block",
+      "color": 6
+    },
+    {
+      "x": 4,
+      "y": 12,
+      "visibleY": 12,
+      "type": "block",
+      "color": 18,
+      "weaponId": "katana",
+      "fragmentIndex": 0
+    },
+    {
+      "x": 5,
+      "y": 12,
+      "visibleY": 12,
+      "type": "block",
+      "color": 18,
+      "weaponId": "katana",
+      "fragmentIndex": 1
+    },
+    {
+      "x": 6,
+      "y": 12,
+      "visibleY": 12,
+      "type": "block",
+      "color": 18,
+      "weaponId": "katana",
+      "fragmentIndex": 2
+    },
+    {
+      "x": 3,
+      "y": 13,
+      "visibleY": 13,
+      "type": "block",
+      "color": 12,
+      "weaponId": "bomb",
+      "fragmentIndex": 0
+    },
+    {
+      "x": 4,
+      "y": 13,
+      "visibleY": 13,
+      "type": "block",
+      "color": 18,
+      "weaponId": "katana",
+      "fragmentIndex": 3
+    },
+    {
+      "x": 5,
+      "y": 13,
+      "visibleY": 13,
+      "type": "block",
+      "color": 18,
+      "weaponId": "katana",
+      "fragmentIndex": 4
+    },
+    {
+      "x": 6,
+      "y": 13,
+      "visibleY": 13,
+      "type": "block",
+      "color": 18,
+      "weaponId": "katana",
+      "fragmentIndex": 5
+    },
+    {
+      "x": 9,
+      "y": 15,
+      "visibleY": 15,
+      "type": "block",
+      "color": 1
+    },
+    {
+      "x": 6,
+      "y": 16,
+      "visibleY": 16,
+      "type": "block",
+      "color": 14,
+      "weaponId": "pan",
+      "fragmentIndex": 0
+    }
+  ],
+  "currentPiece": {
+    "name": "SpearBracket",
+    "x": 5,
+    "y": 0,
+    "rotation": 0,
+    "occupiedCells": [
+      {
+        "x": 5,
+        "y": 0
+      },
+      {
+        "x": 6,
+        "y": 0
+      },
+      {
+        "x": 6,
+        "y": 1
+      }
+    ]
+  },
+  "holdPiece": null,
+  "nextPieces": [
+    "KatanaCradle",
+    "CargoCrate",
+    "RubbleBar"
+  ]
+}

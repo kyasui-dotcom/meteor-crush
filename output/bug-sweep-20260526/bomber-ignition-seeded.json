@@ -1,0 +1,140 @@
+{
+  "coordinateSystem": "board origin is top-left; x increases right; y increases downward; all 22 rows are rendered; rows 0-1 are the spawn warning zone",
+  "mode": "purify",
+  "state": "playing",
+  "score": 0,
+  "level": 0,
+  "lines": 0,
+  "speed": 1000,
+  "chainText": "",
+  "chainTimer": 0,
+  "chainEffectTier": -1,
+  "ghostY": null,
+  "filledCellCount": 15,
+  "filledCells": [
+    {
+      "x": 0,
+      "y": 8,
+      "visibleY": 8,
+      "type": "bomb",
+      "color": 17,
+      "bombKind": "cluster"
+    },
+    {
+      "x": 2,
+      "y": 10,
+      "visibleY": 10,
+      "type": "block",
+      "color": 0
+    },
+    {
+      "x": 6,
+      "y": 10,
+      "visibleY": 10,
+      "type": "block",
+      "color": 1
+    },
+    {
+      "x": 0,
+      "y": 12,
+      "visibleY": 12,
+      "type": "block",
+      "color": 5
+    },
+    {
+      "x": 3,
+      "y": 12,
+      "visibleY": 12,
+      "type": "block",
+      "color": 15,
+      "fire": true
+    },
+    {
+      "x": 4,
+      "y": 12,
+      "visibleY": 12,
+      "type": "bomb",
+      "color": 16,
+      "bombKind": "thunder"
+    },
+    {
+      "x": 2,
+      "y": 14,
+      "visibleY": 14,
+      "type": "block",
+      "color": 2
+    },
+    {
+      "x": 6,
+      "y": 14,
+      "visibleY": 14,
+      "type": "block",
+      "color": 3
+    },
+    {
+      "x": 6,
+      "y": 15,
+      "visibleY": 15,
+      "type": "block",
+      "color": 1,
+      "fire": true
+    },
+    {
+      "x": 7,
+      "y": 15,
+      "visibleY": 15,
+      "type": "bomb",
+      "color": 8,
+      "bombKind": "normal",
+      "megaBomb": true
+    },
+    {
+      "x": 8,
+      "y": 15,
+      "visibleY": 15,
+      "type": "bomb",
+      "color": 8,
+      "bombKind": "normal",
+      "megaBomb": true
+    },
+    {
+      "x": 7,
+      "y": 16,
+      "visibleY": 16,
+      "type": "bomb",
+      "color": 8,
+      "bombKind": "normal",
+      "megaBomb": true
+    },
+    {
+      "x": 8,
+      "y": 16,
+      "visibleY": 16,
+      "type": "bomb",
+      "color": 8,
+      "bombKind": "normal",
+      "megaBomb": true
+    },
+    {
+      "x": 10,
+      "y": 18,
+      "visibleY": 18,
+      "type": "block",
+      "color": 3
+    },
+    {
+      "x": 11,
+      "y": 19,
+      "visibleY": 19,
+      "type": "block",
+      "color": 2
+    }
+  ],
+  "currentPiece": null,
+  "holdPiece": null,
+  "nextPieces": [
+    "Vane",
+    "Arc",
+    "Bend"
+  ]
+}

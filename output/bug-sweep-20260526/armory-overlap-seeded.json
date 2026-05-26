@@ -1,0 +1,110 @@
+{
+  "coordinateSystem": "board origin is top-left; x increases right; y increases downward; all 22 rows are rendered; rows 0-1 are the spawn warning zone",
+  "mode": "purify",
+  "state": "playing",
+  "score": 0,
+  "level": 0,
+  "lines": 0,
+  "speed": 1000,
+  "chainText": "",
+  "chainTimer": 0,
+  "chainEffectTier": -1,
+  "ghostY": 10,
+  "filledCellCount": 8,
+  "filledCells": [
+    {
+      "x": 1,
+      "y": 9,
+      "visibleY": 9,
+      "type": "block",
+      "color": 0
+    },
+    {
+      "x": 4,
+      "y": 12,
+      "visibleY": 12,
+      "type": "block",
+      "color": 12,
+      "weaponId": "bomb",
+      "fragmentIndex": 0
+    },
+    {
+      "x": 5,
+      "y": 12,
+      "visibleY": 12,
+      "type": "block",
+      "color": 12,
+      "weaponId": "bomb",
+      "fragmentIndex": 1
+    },
+    {
+      "x": 6,
+      "y": 12,
+      "visibleY": 12,
+      "type": "block",
+      "color": 12,
+      "weaponId": "bomb",
+      "fragmentIndex": 2
+    },
+    {
+      "x": 4,
+      "y": 13,
+      "visibleY": 13,
+      "type": "block",
+      "color": 12,
+      "weaponId": "bomb",
+      "fragmentIndex": 3
+    },
+    {
+      "x": 5,
+      "y": 13,
+      "visibleY": 13,
+      "type": "block",
+      "color": 12,
+      "weaponId": "bomb",
+      "fragmentIndex": 4
+    },
+    {
+      "x": 6,
+      "y": 13,
+      "visibleY": 13,
+      "type": "block",
+      "color": 12,
+      "weaponId": "bomb",
+      "fragmentIndex": 5
+    },
+    {
+      "x": 7,
+      "y": 14,
+      "visibleY": 14,
+      "type": "block",
+      "color": 1
+    }
+  ],
+  "currentPiece": {
+    "name": "TubBracket",
+    "x": 5,
+    "y": 0,
+    "rotation": 0,
+    "occupiedCells": [
+      {
+        "x": 5,
+        "y": 0
+      },
+      {
+        "x": 6,
+        "y": 0
+      },
+      {
+        "x": 6,
+        "y": 1
+      }
+    ]
+  },
+  "holdPiece": null,
+  "nextPieces": [
+    "ScrapBar",
+    "CargoCrate",
+    "CargoCrate"
+  ]
+}

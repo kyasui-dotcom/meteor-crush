@@ -1,0 +1,49 @@
+{
+  "coordinateSystem": "board origin is top-left; x increases right; y increases downward; all 22 rows are rendered; rows 0-1 are the spawn warning zone",
+  "mode": "armory",
+  "state": "playing",
+  "score": 5208,
+  "level": 0,
+  "lines": 3,
+  "speed": 1000,
+  "chainText": "Triple Crush",
+  "chainTimer": 1850.0000000000014,
+  "chainEffectTier": 0,
+  "ghostY": 21,
+  "filledCellCount": 1,
+  "filledCells": [
+    {
+      "x": 0,
+      "y": 21,
+      "visibleY": 21,
+      "type": "block",
+      "color": 6
+    }
+  ],
+  "currentPiece": {
+    "name": "MissileRack",
+    "x": 4,
+    "y": 0,
+    "rotation": 0,
+    "occupiedCells": [
+      {
+        "x": 4,
+        "y": 0
+      },
+      {
+        "x": 5,
+        "y": 0
+      },
+      {
+        "x": 6,
+        "y": 0
+      }
+    ]
+  },
+  "holdPiece": null,
+  "nextPieces": [
+    "CargoCrate",
+    "ScrapCrate",
+    "RubbleHook"
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "coordinateSystem": "board origin is top-left; x increases right; y increases downward; all 22 rows are rendered; rows 0-1 are the spawn warning zone",
+  "mode": "purify",
+  "state": "playing",
+  "score": 180,
+  "level": 0,
+  "lines": 1,
+  "speed": 1000,
+  "chainText": "Crush",
+  "chainTimer": 1750,
+  "chainEffectTier": 1,
+  "ghostY": 19,
+  "filledCellCount": 3,
+  "filledCells": [
+    {
+      "x": 3,
+      "y": 10,
+      "visibleY": 10,
+      "type": "block",
+      "color": 2,
+      "core": true
+    },
+    {
+      "x": 4,
+      "y": 21,
+      "visibleY": 21,
+      "type": "block",
+      "color": 5
+    },
+    {
+      "x": 5,
+      "y": 21,
+      "visibleY": 21,
+      "type": "block",
+      "color": 2
+    }
+  ],
+  "currentPiece": {
+    "name": "Triad-1-1-4",
+    "x": 4,
+    "y": 0,
+    "rotation": 0,
+    "occupiedCells": [
+      {
+        "x": 4,
+        "y": 0
+      },
+      {
+        "x": 4,
+        "y": 1
+      },
+      {
+        "x": 5,
+        "y": 1
+      }
+    ]
+  },
+  "holdPiece": null,
+  "nextPieces": [
+    "Triad-4-4-1",
+    "Triad-2-2-4",
+    "Triad-5-5-1"
+  ]
+}

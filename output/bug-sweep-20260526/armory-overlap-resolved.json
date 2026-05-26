@@ -1,0 +1,49 @@
+{
+  "coordinateSystem": "board origin is top-left; x increases right; y increases downward; all 22 rows are rendered; rows 0-1 are the spawn warning zone",
+  "mode": "purify",
+  "state": "playing",
+  "score": 586,
+  "level": 0,
+  "lines": 1,
+  "speed": 1000,
+  "chainText": "BOMB OVERDRIVE",
+  "chainTimer": 1883.3333333333348,
+  "chainEffectTier": 1,
+  "ghostY": 21,
+  "filledCellCount": 1,
+  "filledCells": [
+    {
+      "x": 1,
+      "y": 21,
+      "visibleY": 21,
+      "type": "block",
+      "color": 0
+    }
+  ],
+  "currentPiece": {
+    "name": "ScrapBar",
+    "x": 4,
+    "y": 0,
+    "rotation": 0,
+    "occupiedCells": [
+      {
+        "x": 4,
+        "y": 0
+      },
+      {
+        "x": 5,
+        "y": 0
+      },
+      {
+        "x": 6,
+        "y": 0
+      }
+    ]
+  },
+  "holdPiece": null,
+  "nextPieces": [
+    "CargoCrate",
+    "CargoCrate",
+    "MissileBracket"
+  ]
+}
