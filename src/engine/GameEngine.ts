@@ -286,6 +286,7 @@ export class GameEngine {
     const lockedPiece = this.currentPiece;
     const occupiedCells = lockedPiece.getOccupiedCells();
     if (occupiedCells.some((cell) => !this.board.isInBounds(cell.x, cell.y))) {
+      this.currentPiece = null;
       this.stop();
       return;
     }
@@ -325,6 +326,7 @@ export class GameEngine {
         }
       }
     }
+    this.currentPiece = null;
 
     if (lockedPiece.definition.special === 'supportWeight') {
       const compressedCells = this.applySupportWeight(lockedPiece);
@@ -865,6 +867,7 @@ export class GameEngine {
     this.isLocking = false;
 
     if (!CollisionDetector.canPlace(this.board, piece)) {
+      this.currentPiece = null;
       this.stop();
     }
   }

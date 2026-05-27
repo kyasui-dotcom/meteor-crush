@@ -211,6 +211,7 @@ describe('GameEngine', () => {
       engine['lockPiece']();
 
       expect(engine.state).toBe('game_over');
+      expect(engine.currentPiece).toBeNull();
       expect(countFilledCells()).toBe(0);
     });
 
@@ -225,6 +226,7 @@ describe('GameEngine', () => {
       engine['lockPiece']();
 
       expect(engine.state).toBe('game_over');
+      expect(engine.currentPiece).toBeNull();
       expect(countFilledCells()).toBe(0);
     });
 
@@ -253,6 +255,24 @@ describe('GameEngine', () => {
       engine['holdCurrentPiece']();
 
       expect(engine.state).toBe('game_over');
+      expect(engine.currentPiece).toBeNull();
+    });
+
+    it('clears the active piece after a legal top-out lock so the game-over board is not double-drawn', () => {
+      engine.start(new ClassicMode());
+      engine.board.reset();
+
+      engine.board.setCell(11, 0, { type: 'block', color: 0 });
+
+      const bendPiece = STANDARD_PIECES.find((piece) => piece.name === 'Bend');
+      expect(bendPiece).toBeDefined();
+      engine.currentPiece = new Piece(bendPiece!, 0, 0);
+
+      engine['lockPiece']();
+
+      expect(engine.state).toBe('game_over');
+      expect(engine.currentPiece).toBeNull();
+      expect(countFilledCells()).toBe(4);
     });
 
     it('bomber mode does not request support-weight rescue pieces', () => {
