@@ -109,6 +109,10 @@ export class GameEngine {
     this.mode.initializeBoard?.(this.board, this.purifyStage);
     this.updateNextPieces();
     this.spawnPiece();
+    if (this.state !== 'playing') {
+      this.inputManager.resetAll();
+      return;
+    }
     this.inputManager.bind();
     this.inputManager.resetAll();
   }

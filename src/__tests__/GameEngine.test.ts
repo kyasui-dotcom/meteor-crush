@@ -156,6 +156,28 @@ describe('GameEngine', () => {
       expect(engine.currentPiece).toBeNull();
     });
 
+    it('does not keep input listeners active after a blocked initial spawn', () => {
+      const blockedSpawnMode: GameMode = {
+        type: 'classic',
+        shouldIncludeBombs: () => false,
+        hasFallingPieces: () => true,
+        onLineClear: () => ({ linesCleared: 0, score: 0, text: '', effectTier: 0 }),
+        isGameOver: (board) => board.isTopBlocked(),
+        initializeBoard: (board) => {
+          board.setCell(4, 0, { type: 'block', color: 0 });
+          board.setCell(5, 0, { type: 'block', color: 0 });
+          board.setCell(6, 0, { type: 'block', color: 0 });
+          board.setCell(5, 1, { type: 'block', color: 0 });
+        },
+      };
+
+      engine.start(blockedSpawnMode);
+      window.dispatchEvent(new KeyboardEvent('keydown', { code: 'ArrowLeft' }));
+
+      expect(engine.state).toBe('game_over');
+      expect(engine.inputManager.isJustPressed('left')).toBe(false);
+    });
+
     it('rescue colony purges a wide area in purify mode', () => {
       engine.start(new PurifyMode());
       engine.board.reset();
