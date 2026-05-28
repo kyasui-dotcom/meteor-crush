@@ -83,6 +83,7 @@ export class GameEngine {
 
   start(mode?: GameMode): void {
     if (mode) this.mode = mode;
+    this.state = 'playing';
     this.board.reset();
     this.pieceFactory.reset();
     this.score = 0;
@@ -108,7 +109,6 @@ export class GameEngine {
     this.mode.initializeBoard?.(this.board, this.purifyStage);
     this.updateNextPieces();
     this.spawnPiece();
-    this.state = 'playing';
     this.inputManager.bind();
     this.inputManager.resetAll();
   }

@@ -8,6 +8,7 @@ import { ArmoryMode } from '@/engine/modes/ArmoryMode';
 import { ARMORY_PIECES } from '@/engine/ArmoryData';
 import { PURIFY_RESCUE_COLONY, PurifyMode } from '@/engine/modes/PurifyMode';
 import { BOARD_WIDTH, BOARD_HEIGHT } from '@/lib/constants';
+import { GameMode } from '@/engine/modes/GameMode';
 
 describe('GameEngine', () => {
   let engine: GameEngine;
@@ -132,6 +133,27 @@ describe('GameEngine', () => {
       const firstCell = engine.currentPiece?.getOccupiedCells()[0];
       expect(firstCell).toBeDefined();
       expect(ARMORY_PIECES.some((piece) => piece.name === engine.currentPiece?.definition.name)).toBe(true);
+    });
+
+    it('keeps game_over when the initial spawn is blocked during start', () => {
+      const blockedSpawnMode: GameMode = {
+        type: 'classic',
+        shouldIncludeBombs: () => false,
+        hasFallingPieces: () => true,
+        onLineClear: () => ({ linesCleared: 0, score: 0, text: '', effectTier: 0 }),
+        isGameOver: (board) => board.isTopBlocked(),
+        initializeBoard: (board) => {
+          board.setCell(4, 0, { type: 'block', color: 0 });
+          board.setCell(5, 0, { type: 'block', color: 0 });
+          board.setCell(6, 0, { type: 'block', color: 0 });
+          board.setCell(5, 1, { type: 'block', color: 0 });
+        },
+      };
+
+      engine.start(blockedSpawnMode);
+
+      expect(engine.state).toBe('game_over');
+      expect(engine.currentPiece).toBeNull();
     });
 
     it('rescue colony purges a wide area in purify mode', () => {

@@ -1,0 +1,75 @@
+ INFO  Accepting connections at http://localhost:3100
+ HTTP  2026/5/28 9:05:04 127.0.0.1 GET /game/
+ HTTP  2026/5/28 9:05:04 127.0.0.1 Returned 200 in 14 ms
+ HTTP  2026/5/28 9:05:14 127.0.0.1 GET /game/
+ HTTP  2026/5/28 9:05:14 127.0.0.1 Returned 200 in 3 ms
+ HTTP  2026/5/28 9:05:14 127.0.0.1 GET /_next/static/chunks/87e29d9586d1d0dd.css
+ HTTP  2026/5/28 9:05:14 127.0.0.1 GET /_next/static/chunks/b9a0fabf54a78ef2.js
+ HTTP  2026/5/28 9:05:14 127.0.0.1 Returned 200 in 6 ms
+ HTTP  2026/5/28 9:05:14 127.0.0.1 Returned 200 in 4 ms
+ HTTP  2026/5/28 9:05:14 127.0.0.1 GET /_next/static/chunks/806bdb8e4a6a9b95.js
+ HTTP  2026/5/28 9:05:14 127.0.0.1 GET /_next/static/chunks/d1e380e53588e373.js
+ HTTP  2026/5/28 9:05:14 127.0.0.1 GET /_next/static/chunks/f2f58a7e93290fbb.js
+ HTTP  2026/5/28 9:05:14 127.0.0.1 GET /_next/static/chunks/a1f0bb88fd8545a6.js
+ HTTP  2026/5/28 9:05:14 127.0.0.1 GET /_next/static/chunks/turbopack-0ef59a22f2feb809.js
+ HTTP  2026/5/28 9:05:14 127.0.0.1 GET /_next/static/chunks/ff1a16fafef87110.js
+ HTTP  2026/5/28 9:05:14 127.0.0.1 Returned 200 in 10 ms
+ HTTP  2026/5/28 9:05:14 127.0.0.1 Returned 200 in 8 ms
+ HTTP  2026/5/28 9:05:14 127.0.0.1 Returned 200 in 7 ms
+ HTTP  2026/5/28 9:05:14 127.0.0.1 Returned 200 in 11 ms
+ HTTP  2026/5/28 9:05:14 127.0.0.1 Returned 200 in 7 ms
+ HTTP  2026/5/28 9:05:14 127.0.0.1 Returned 200 in 13 ms
+ HTTP  2026/5/28 9:05:14 127.0.0.1 GET /_next/static/chunks/730fb7992de3a059.js
+ HTTP  2026/5/28 9:05:14 127.0.0.1 GET /_next/static/chunks/4400e76cb0a7a561.js
+ HTTP  2026/5/28 9:05:14 127.0.0.1 GET /_next/static/chunks/65589480fb0dcb4e.js
+ HTTP  2026/5/28 9:05:14 127.0.0.1 Returned 200 in 9 ms
+ HTTP  2026/5/28 9:05:14 127.0.0.1 Returned 200 in 12 ms
+ HTTP  2026/5/28 9:05:14 127.0.0.1 Returned 200 in 10 ms
+ HTTP  2026/5/28 9:05:15 127.0.0.1 GET /sw.js
+ HTTP  2026/5/28 9:05:15 127.0.0.1 Returned 200 in 3 ms
+ HTTP  2026/5/28 9:05:15 127.0.0.1 GET /
+ HTTP  2026/5/28 9:05:15 127.0.0.1 GET /game/
+ HTTP  2026/5/28 9:05:15 127.0.0.1 GET /manifest.webmanifest
+ HTTP  2026/5/28 9:05:15 127.0.0.1 Returned 304 in 2 ms
+ HTTP  2026/5/28 9:05:15 127.0.0.1 Returned 200 in 4 ms
+ HTTP  2026/5/28 9:05:15 127.0.0.1 GET /icon.svg
+ HTTP  2026/5/28 9:05:15 127.0.0.1 Returned 200 in 5 ms
+ HTTP  2026/5/28 9:05:15 127.0.0.1 Returned 200 in 3 ms
+ HTTP  2026/5/28 9:05:15 127.0.0.1 GET /maskable-icon.svg
+ HTTP  2026/5/28 9:05:15 127.0.0.1 Returned 200 in 1 ms
+ HTTP  2026/5/28 9:05:44 127.0.0.1 GET /game/
+ HTTP  2026/5/28 9:05:44 127.0.0.1 Returned 200 in 1 ms
+ HTTP  2026/5/28 9:05:44 127.0.0.1 GET /_next/static/chunks/87e29d9586d1d0dd.css
+ HTTP  2026/5/28 9:05:44 127.0.0.1 GET /_next/static/chunks/b9a0fabf54a78ef2.js
+ HTTP  2026/5/28 9:05:44 127.0.0.1 Returned 200 in 2 ms
+ HTTP  2026/5/28 9:05:44 127.0.0.1 Returned 200 in 2 ms
+ HTTP  2026/5/28 9:05:44 127.0.0.1 GET /_next/static/chunks/806bdb8e4a6a9b95.js
+ HTTP  2026/5/28 9:05:44 127.0.0.1 GET /_next/static/chunks/d1e380e53588e373.js
+ HTTP  2026/5/28 9:05:44 127.0.0.1 GET /_next/static/chunks/a1f0bb88fd8545a6.js
+ HTTP  2026/5/28 9:05:44 127.0.0.1 Returned 200 in 3 ms
+ HTTP  2026/5/28 9:05:44 127.0.0.1 Returned 200 in 2 ms
+ HTTP  2026/5/28 9:05:44 127.0.0.1 GET /_next/static/chunks/f2f58a7e93290fbb.js
+ HTTP  2026/5/28 9:05:44 127.0.0.1 GET /_next/static/chunks/turbopack-0ef59a22f2feb809.js
+ HTTP  2026/5/28 9:05:44 127.0.0.1 GET /_next/static/chunks/ff1a16fafef87110.js
+ HTTP  2026/5/28 9:05:44 127.0.0.1 Returned 200 in 4 ms
+ HTTP  2026/5/28 9:05:44 127.0.0.1 Returned 200 in 2 ms
+ HTTP  2026/5/28 9:05:44 127.0.0.1 Returned 200 in 3 ms
+ HTTP  2026/5/28 9:05:44 127.0.0.1 Returned 200 in 3 ms
+ HTTP  2026/5/28 9:05:44 127.0.0.1 GET /_next/static/chunks/730fb7992de3a059.js
+ HTTP  2026/5/28 9:05:44 127.0.0.1 GET /_next/static/chunks/4400e76cb0a7a561.js
+ HTTP  2026/5/28 9:05:44 127.0.0.1 Returned 200 in 3 ms
+ HTTP  2026/5/28 9:05:44 127.0.0.1 GET /_next/static/chunks/65589480fb0dcb4e.js
+ HTTP  2026/5/28 9:05:44 127.0.0.1 Returned 200 in 5 ms
+ HTTP  2026/5/28 9:05:44 127.0.0.1 Returned 200 in 4 ms
+ HTTP  2026/5/28 9:05:44 127.0.0.1 GET /sw.js
+ HTTP  2026/5/28 9:05:44 127.0.0.1 Returned 200 in 1 ms
+ HTTP  2026/5/28 9:05:44 127.0.0.1 GET /
+ HTTP  2026/5/28 9:05:44 127.0.0.1 GET /manifest.webmanifest
+ HTTP  2026/5/28 9:05:44 127.0.0.1 GET /game/
+ HTTP  2026/5/28 9:05:44 127.0.0.1 Returned 200 in 2 ms
+ HTTP  2026/5/28 9:05:44 127.0.0.1 Returned 200 in 2 ms
+ HTTP  2026/5/28 9:05:44 127.0.0.1 Returned 304 in 2 ms
+ HTTP  2026/5/28 9:05:44 127.0.0.1 GET /icon.svg
+ HTTP  2026/5/28 9:05:44 127.0.0.1 Returned 200 in 1 ms
+ HTTP  2026/5/28 9:05:44 127.0.0.1 GET /maskable-icon.svg
+ HTTP  2026/5/28 9:05:44 127.0.0.1 Returned 200 in 1 ms
