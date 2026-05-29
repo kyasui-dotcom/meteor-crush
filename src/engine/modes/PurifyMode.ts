@@ -100,9 +100,7 @@ export class PurifyMode implements GameMode {
   }
 
   initializeBoard(board: Board, stage: number): void {
-    if (stage === 1) {
-      this.piecesSinceColony = 0;
-    }
+    this.piecesSinceColony = 0;
     this.colonyUsedThisStage = false;
 
     const coreCount = Math.min(14, 8 + Math.max(0, stage - 1));

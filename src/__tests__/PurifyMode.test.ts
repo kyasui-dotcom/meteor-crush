@@ -43,4 +43,28 @@ describe('PurifyMode', () => {
     expect(override?.special).toBe('rescueColony');
     expect(randomSpy).toHaveBeenCalled();
   });
+
+  it('resets the rescue-colony timer when a new stage board is initialized', () => {
+    const mode = new PurifyMode();
+    const board = new Board();
+    mode.initializeBoard(board, 1);
+
+    for (let x = 0; x < board.width; x += 2) {
+      board.setCell(x, 4, { type: 'block', color: 1 });
+    }
+
+    for (let i = 0; i < 5; i++) {
+      expect(mode.getSpawnOverride?.(board, 1, 0) ?? null).toBeNull();
+    }
+
+    board.reset();
+    mode.initializeBoard(board, 2);
+    for (let x = 0; x < board.width; x += 2) {
+      board.setCell(x, 4, { type: 'block', color: 1 });
+    }
+
+    const randomSpy = vi.spyOn(Math, 'random').mockReturnValue(0);
+    expect(mode.getSpawnOverride?.(board, 2, 0) ?? null).toBeNull();
+    expect(randomSpy).not.toHaveBeenCalled();
+  });
 });
